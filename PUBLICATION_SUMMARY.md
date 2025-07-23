@@ -19,7 +19,7 @@
 ## 🚀 Что у нас есть
 
 ### 📱 Приложение
-- **Название**: TravelExpenses
+- **Название**: Travel Expenses Tracker
 - **Bundle ID**: com.Travon.TravelExpenses
 - **Версия**: 1.0.0
 - **Платформы**: iPhone + iPad

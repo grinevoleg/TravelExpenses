@@ -20,7 +20,7 @@
 2. Перейдите в "My Apps" → "+" → "New App"
 3. Заполните информацию:
    - **Platforms**: iOS
-   - **Name**: TravelExpenses
+   - **Name**: Travel Expenses Tracker
    - **Primary language**: English
    - **Bundle ID**: com.Travon.TravelExpenses
    - **SKU**: travel-expenses-2024

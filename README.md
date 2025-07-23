@@ -1,4 +1,4 @@
-# Travel Expenses - Expense Tracking App for Travelers
+# Travel Expenses Tracker - Expense Tracking App for Travelers
 
 iOS app built with Swift and SwiftUI for tracking expenses during travels.
 

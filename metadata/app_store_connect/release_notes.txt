@@ -1,4 +1,4 @@
-🎉 First release of Travel Expenses!
+🎉 First release of Travel Expenses Tracker!
 
 ✨ What's new:
 • Create and manage trips

@@ -12,7 +12,7 @@
 - [ ] Нажмите "+" → "New App"
 - [ ] Заполните:
   - **Platforms**: iOS
-  - **Name**: TravelExpenses
+     - **Name**: Travel Expenses Tracker
      - **Bundle ID**: com.Travon.TravelExpenses
   - **SKU**: travel-expenses-2024
 - [ ] Загрузите иконку: `metadata/app_store_connect/app_icon.png`

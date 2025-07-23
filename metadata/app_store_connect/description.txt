@@ -1,4 +1,4 @@
-Travel Expenses is a simple and convenient app for tracking expenses during travels.
+Travel Expenses Tracker is a simple and convenient app for tracking expenses during travels.
 
 🎯 KEY FEATURES:
 • Create trips with names and dates
@@ -22,4 +22,4 @@ Travel Expenses is a simple and convenient app for tracking expenses during trav
 
 Perfect for travelers who want to control their budget and track expenses during trips.
 
-Download Travel Expenses and start planning your travels wisely! 🌍✈️ 
+Download Travel Expenses Tracker and start planning your travels wisely! 🌍✈️ 
