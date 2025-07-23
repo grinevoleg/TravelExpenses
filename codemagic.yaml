@@ -7,7 +7,7 @@ workflows:
       vars:
         XCODE_PROJECT: "TravelExpenses.xcodeproj"
         XCODE_SCHEME: "TravelExpenses"
-        BUNDLE_ID: "com.ifly.TravelExpenses.TravelExpenses"
+        BUNDLE_ID: "com.Travon.TravelExpenses"
         APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
         APP_STORE_CONNECT_API_KEY_ID: $APP_STORE_CONNECT_API_KEY_ID
         APP_STORE_CONNECT_API_KEY: $APP_STORE_CONNECT_API_KEY

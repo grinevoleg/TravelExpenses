@@ -13,7 +13,7 @@
 - [ ] Заполните:
   - **Platforms**: iOS
   - **Name**: TravelExpenses
-  - **Bundle ID**: com.ifly.TravelExpenses.TravelExpenses
+     - **Bundle ID**: com.Travon.TravelExpenses
   - **SKU**: travel-expenses-2024
 - [ ] Загрузите иконку: `metadata/app_store_connect/app_icon.png`
 

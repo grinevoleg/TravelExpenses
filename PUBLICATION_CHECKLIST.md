@@ -22,7 +22,7 @@
 ### Приложение
 - [x] ✅ Сборка без ошибок
 - [x] ✅ Иконки 1024x1024 и все размеры
-- [x] ✅ Bundle ID: com.ifly.TravelExpenses.TravelExpenses
+- [x] ✅ Bundle ID: com.Travon.TravelExpenses
 - [x] ✅ Версия: 1.0.0
 - [x] ✅ Минимальная версия iOS: 15.0
 - [x] ✅ Поддержка iPhone и iPad

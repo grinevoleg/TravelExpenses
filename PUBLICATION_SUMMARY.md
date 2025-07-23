@@ -20,7 +20,7 @@
 
 ### 📱 Приложение
 - **Название**: TravelExpenses
-- **Bundle ID**: com.ifly.TravelExpenses.TravelExpenses
+- **Bundle ID**: com.Travon.TravelExpenses
 - **Версия**: 1.0.0
 - **Платформы**: iPhone + iPad
 - **Минимальная iOS**: 15.0

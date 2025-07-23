@@ -22,7 +22,7 @@
    - **Platforms**: iOS
    - **Name**: TravelExpenses
    - **Primary language**: English
-   - **Bundle ID**: com.ifly.TravelExpenses.TravelExpenses
+   - **Bundle ID**: com.Travon.TravelExpenses
    - **SKU**: travel-expenses-2024
    - **User Access**: Full Access
 
