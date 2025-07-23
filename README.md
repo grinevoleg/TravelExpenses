@@ -22,8 +22,14 @@ open TravelExpenses.xcodeproj
 # Create app icon from your file
 ./scripts/create_app_icon.sh your_icon.png
 
-# Follow instructions
-open QUICK_START.md
+# Quick publication guide
+open QUICK_PUBLISH.md
+
+# Detailed publication guide
+open PUBLICATION_GUIDE.md
+
+# Publication checklist
+open PUBLICATION_CHECKLIST.md
 ```
 
 ## 🎨 App Icon Setup
