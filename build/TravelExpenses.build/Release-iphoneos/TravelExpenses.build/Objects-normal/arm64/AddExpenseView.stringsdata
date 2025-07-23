@@ -1,0 +1,96 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Добавьте новый расход",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Сумма расхода",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "₽",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "0",
+        "location": {
+          "startingColumn": 47,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Описание",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "Например: Обед в кафе",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 88
+        }
+      },
+      {
+        "comment": "",
+        "key": "Дата расхода",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 95
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 99
+        }
+      },
+      {
+        "comment": "",
+        "key": "Категория",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 114
+        }
+      },
+      {
+        "comment": "",
+        "key": "Сохранить расход",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Отмена",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 168
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,78 +1,78 @@
-# 🚀 Быстрый старт с Codemagic
+# 🚀 Quick Start with Codemagic
 
-## ⚡ 5 минут до публикации в App Store
+## ⚡ 5 minutes to App Store publication
 
-### 1. Подготовка (2 минуты)
+### 1. Preparation (2 minutes)
 ```bash
-# Клонируйте репозиторий
+# Clone the repository
 git clone https://github.com/your-username/TravelExpenses.git
 cd TravelExpenses
 
-# Создайте иконку приложения
+# Create app icon
 ./scripts/create_app_icon.sh
 
-# Закоммитьте изменения
+# Commit changes
 git add .
 git commit -m "Add Codemagic configuration"
 git push origin main
 ```
 
-### 2. Настройка Codemagic (3 минуты)
+### 2. Codemagic Setup (3 minutes)
 
-1. **Перейдите на [codemagic.io](https://codemagic.io)**
-2. **Подключите репозиторий**
-3. **Добавьте переменные окружения:**
+1. **Go to [codemagic.io](https://codemagic.io)**
+2. **Connect repository**
+3. **Add environment variables:**
 
-#### Обязательные переменные:
+#### Required variables:
 ```
-TEAM_ID = [ваш_team_id]
+TEAM_ID = [your_team_id]
 BUNDLE_ID = com.ifly.TravelExpenses.TravelExpenses
 ```
 
-#### Для подписи (если есть):
+#### For signing (if available):
 ```
-BUILD_CERTIFICATE_BASE64 = [ваш_сертификат]
-CERTIFICATE_PASSWORD = [пароль]
-PROVISIONING_PROFILE_BASE64 = [ваш_профиль]
+BUILD_CERTIFICATE_BASE64 = [your_certificate]
+CERTIFICATE_PASSWORD = [password]
+PROVISIONING_PROFILE_BASE64 = [your_profile]
 ```
 
-### 3. Запуск сборки
-- Нажмите "Start new build"
-- Выберите ветку `main`
-- Дождитесь завершения (5-10 минут)
+### 3. Start Build
+- Press "Start new build"
+- Select `main` branch
+- Wait for completion (5-10 minutes)
 
-### 4. Результат
-- ✅ Приложение собрано
-- ✅ Загружено в TestFlight
-- ✅ Готово к тестированию
+### 4. Result
+- ✅ App built
+- ✅ Uploaded to TestFlight
+- ✅ Ready for testing
 
-## 🔧 Если что-то пошло не так
+## 🔧 If something went wrong
 
-### Ошибка: "No code signing identity"
+### Error: "No code signing identity"
 ```bash
-# Проверьте переменные
+# Check variables
 echo $BUILD_CERTIFICATE_BASE64
 echo $CERTIFICATE_PASSWORD
 ```
 
-### Ошибка: "No provisioning profile"
+### Error: "No provisioning profile"
 ```bash
-# Проверьте профиль
+# Check profile
 echo $PROVISIONING_PROFILE_BASE64
 ```
 
-### Ошибка: "Team ID not found"
+### Error: "Team ID not found"
 ```bash
-# Найдите ваш Team ID в Apple Developer Portal
+# Find your Team ID in Apple Developer Portal
 # https://developer.apple.com/account/
 ```
 
-## 📞 Нужна помощь?
+## 📞 Need help?
 
-- 📖 [Подробная инструкция](CODEMAGIC_SETUP.md)
+- 📖 [Detailed instructions](CODEMAGIC_SETUP.md)
 - 🐛 [GitHub Issues](https://github.com/your-username/TravelExpenses/issues)
 - 📧 Email: support@yourapp.com
 
 ---
 
-**Удачи! Ваше приложение скоро будет в App Store! 🎉** 
+**Good luck! Your app will be in App Store soon! 🎉** 

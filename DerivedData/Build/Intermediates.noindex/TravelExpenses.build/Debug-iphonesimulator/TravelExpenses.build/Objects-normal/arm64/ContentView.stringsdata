@@ -1,0 +1,136 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Trips",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Expenses",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "Summary",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 40
+        }
+      },
+      {
+        "comment": "",
+        "key": "Select a trip for expenses",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "No trips",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 90
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create your first trip on the 'Trips' tab",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ - %@",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "Expenses",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 168
+        }
+      },
+      {
+        "comment": "",
+        "key": "Total: $%.2f",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 172
+        }
+      },
+      {
+        "comment": "",
+        "key": "No expenses",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 184
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add your first expense for this trip",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 187
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 312
+        }
+      },
+      {
+        "comment": "",
+        "key": " ",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 323
+        }
+      },
+      {
+        "comment": "",
+        "key": "No trips",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 369
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create a trip on the \"Trips\" tab",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 373
+        }
+      },
+      {
+        "comment": "",
+        "key": "Select a trip for summary",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 385
+        }
+      }
+    ]
+  },
+  "version": 1
+}

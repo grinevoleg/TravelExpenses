@@ -1,0 +1,90 @@
+{
+  "" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master.dia",
+    "emit-module-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master-emit-module.dia",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master.swiftdeps"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseToTripView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddTripView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddTripView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddTripView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/AddTripView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ContentView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/Expense.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/Expense.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/Expense.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/Expense.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseCategory.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseListView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseSummaryView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseViewModel.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TravelExpensesApp.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/Trip.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/Trip.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/Trip.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/Trip.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripDetailView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripDetailView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripDetailView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripDetailView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripListView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripListView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripListView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripListView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripSummaryView.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripViewModel.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripViewModel.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripViewModel.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/TripViewModel.o"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

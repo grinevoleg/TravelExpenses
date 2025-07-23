@@ -1,0 +1,72 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseListView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Расходов пока нет",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "Добавьте первый расход\nи начните отслеживать траты",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "Добавить расход",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 73
+        }
+      },
+      {
+        "comment": "",
+        "key": "Общие расходы",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld ₽",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld расход%@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 112
+        }
+      },
+      {
+        "comment": "",
+        "key": "Все расходы",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 128
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld ₽",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 224
+        }
+      }
+    ]
+  },
+  "version": 1
+}

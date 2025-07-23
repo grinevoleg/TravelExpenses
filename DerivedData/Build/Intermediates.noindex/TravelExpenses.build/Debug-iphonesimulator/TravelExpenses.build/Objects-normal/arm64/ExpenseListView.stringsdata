@@ -1,0 +1,72 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseListView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "No expenses yet",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add your first expense\nand start tracking spending",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add Expense",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "Total Expenses",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "$%lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld expense%@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "All Expenses",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 129
+        }
+      },
+      {
+        "comment": "",
+        "key": "$%lld",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 225
+        }
+      }
+    ]
+  },
+  "version": 1
+}

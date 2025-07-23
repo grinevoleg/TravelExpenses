@@ -1,0 +1,88 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripSummaryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "%@ - %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "$%lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Total Expenses",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "Expenses by Category",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "$%lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 122
+        }
+      },
+      {
+        "comment": "",
+        "key": "%.1f%%",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 127
+        }
+      },
+      {
+        "comment": "",
+        "key": "Daily Expenses",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 157
+        }
+      },
+      {
+        "comment": "",
+        "key": "No expense data",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 166
+        }
+      },
+      {
+        "comment": "",
+        "key": "$%lld",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 186
+        }
+      },
+      {
+        "comment": "",
+        "key": "Statistics",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 212
+        }
+      }
+    ]
+  },
+  "version": 1
+}

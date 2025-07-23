@@ -1,0 +1,72 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseSummaryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Нет данных для сводки",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "Добавьте расходы в поездки\nчтобы увидеть статистику",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 58
+        }
+      },
+      {
+        "comment": "",
+        "key": "Общие расходы",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld ₽",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld расход%@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 87
+        }
+      },
+      {
+        "comment": "",
+        "key": "По категориям",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld ₽",
+        "location": {
+          "startingColumn": 58,
+          "startingLine": 129
+        }
+      },
+      {
+        "comment": "",
+        "key": "%.1f%%",
+        "location": {
+          "startingColumn": 62,
+          "startingLine": 135
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,168 @@
+{
+  "" : {
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master.dia",
+    "emit-module-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master-emit-module.dia",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpenses-master.swiftdeps"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseToTripView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseToTripView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddExpenseView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddTripView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddTripView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddTripView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddTripView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddTripView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddTripView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddTripView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddTripView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/AddTripView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ContentView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/Expense.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Expense.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Expense.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Expense.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Expense.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Expense.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Expense.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Expense.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Expense~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseCategory.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseCategory~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseListView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseListView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseListView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseSummaryView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseSummaryView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseViewModel.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/ExpenseViewModel~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TravelExpensesApp.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TravelExpensesApp~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/Trip.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Trip.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Trip.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Trip.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Trip.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Trip.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Trip.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Trip.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/Trip~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripDetailView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripDetailView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripDetailView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripDetailView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripDetailView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripDetailView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripDetailView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripDetailView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripDetailView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripListView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripListView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripListView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripListView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripListView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripListView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripListView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripListView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripListView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripSummaryView.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripSummaryView.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripSummaryView~partial.swiftmodule"
+  },
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripViewModel.swift" : {
+    "const-values" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripViewModel.swiftconstvalues",
+    "dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripViewModel.d",
+    "diagnostics" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripViewModel.dia",
+    "index-unit-output-path" : "/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripViewModel.o",
+    "llvm-bc" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripViewModel.bc",
+    "object" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripViewModel.o",
+    "swift-dependencies" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripViewModel.swiftdeps",
+    "swiftmodule" : "/Users/oleggrinev/Dev/newfactory/TravelExpenses/DerivedData/Build/Intermediates.noindex/TravelExpenses.build/Debug-iphonesimulator/TravelExpenses.build/Objects-normal/arm64/TripViewModel~partial.swiftmodule"
+  }
+}

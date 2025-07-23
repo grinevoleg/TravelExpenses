@@ -1,192 +1,192 @@
-# Travel Expenses - Приложение для учета расходов в путешествии
+# Travel Expenses - Expense Tracking App for Travelers
 
-iOS приложение на Swift с использованием SwiftUI для отслеживания затрат во время путешествий.
+iOS app built with Swift and SwiftUI for tracking expenses during travels.
 
-## 🚀 Быстрый старт
+## 🚀 Quick Start
 
-### Локальная разработка
+### Local Development
 ```bash
-# Клонируйте репозиторий
+# Clone the repository
 git clone https://github.com/your-username/TravelExpenses.git
 cd TravelExpenses
 
-# Откройте в Xcode
+# Open in Xcode
 open TravelExpenses.xcodeproj
 
-# Запустите на симуляторе
-# ⌘+R в Xcode
+# Run on simulator
+# ⌘+R in Xcode
 ```
 
-### Публикация в App Store
+### App Store Publication
 ```bash
-# Создайте иконку приложения
+# Create app icon
 ./scripts/create_app_icon.sh
 
-# Следуйте инструкции
+# Follow instructions
 open QUICK_START.md
 ```
 
-## 📱 Функциональность
+## 📱 Features
 
-### Основные возможности:
-- ✅ Добавление расходов с выбором категории
-- ✅ Просмотр списка всех трат
-- ✅ Группировка и подсчет по категориям
-- ✅ Общая сумма всех расходов
-- ✅ Удаление расходов
-- ✅ Сохранение данных между запусками
-- ✅ Создание и управление поездками
-- ✅ Детальная статистика по поездкам
+### Core Features:
+- ✅ Add expenses with category selection
+- ✅ View all expenses list
+- ✅ Group and calculate by categories
+- ✅ Total sum of all expenses
+- ✅ Delete expenses
+- ✅ Data persistence between launches
+- ✅ Create and manage trips
+- ✅ Detailed trip statistics
 
-### Категории расходов:
-- 🍽️ **Еда** - рестораны, кафе, продукты
-- 🚗 **Транспорт** - такси, автобусы, поезда
-- 🏠 **Жилье** - отели, хостелы, аренда
-- 🎮 **Развлечения** - музеи, экскурсии, активности
+### Expense Categories:
+- 🍽️ **Food** - restaurants, cafes, groceries
+- 🚗 **Transport** - taxis, buses, trains
+- 🏠 **Accommodation** - hotels, hostels, rentals
+- 🎮 **Entertainment** - museums, tours, activities
 
-## 🏗️ Архитектура
+## 🏗️ Architecture
 
-- **Фреймворк**: SwiftUI
-- **Паттерн**: MVVM (Model-View-ViewModel)
-- **Хранение данных**: UserDefaults с JSON кодированием
-- **Минимальная версия iOS**: 15.0
-- **CI/CD**: Codemagic для автоматической публикации
+- **Framework**: SwiftUI
+- **Pattern**: MVVM (Model-View-ViewModel)
+- **Data Storage**: UserDefaults with JSON encoding
+- **Minimum iOS Version**: 15.0
+- **CI/CD**: Codemagic for automatic publication
 
-## 📁 Структура проекта
+## 📁 Project Structure
 
 ```
 TravelExpenses/
 ├── TravelExpenses/
-│   ├── TravelExpensesApp.swift      # Главный файл приложения
-│   ├── ContentView.swift            # Основной экран с табами
-│   ├── TripListView.swift           # Список поездок
-│   ├── AddTripView.swift            # Добавление поездки
-│   ├── TripDetailView.swift         # Детали поездки
-│   ├── ExpenseListView.swift        # Список расходов
-│   ├── AddExpenseView.swift         # Добавление расхода
-│   ├── ExpenseSummaryView.swift     # Сводка по категориям
-│   ├── TripSummaryView.swift        # Сводка по поездкам
-│   ├── Trip.swift                   # Модель поездки
-│   ├── Expense.swift                # Модель расхода
-│   ├── ExpenseCategory.swift        # Модель категории
-│   ├── TripViewModel.swift          # ViewModel для поездок
-│   ├── ExpenseViewModel.swift       # ViewModel для расходов
-│   └── Assets.xcassets/             # Ресурсы приложения
-├── codemagic.yaml                   # Конфигурация CI/CD
-├── metadata/                        # Метаданные для App Store
-├── scripts/                         # Скрипты автоматизации
-├── CODEMAGIC_SETUP.md              # Инструкция по Codemagic
-├── QUICK_START.md                  # Быстрый старт
-├── PRIVACY.md                      # Политика конфиденциальности
-└── TravelExpenses.xcodeproj/        # Проект Xcode
+│   ├── TravelExpensesApp.swift      # Main app file
+│   ├── ContentView.swift            # Main screen with tabs
+│   ├── TripListView.swift           # Trips list
+│   ├── AddTripView.swift            # Add trip
+│   ├── TripDetailView.swift         # Trip details
+│   ├── ExpenseListView.swift        # Expenses list
+│   ├── AddExpenseView.swift         # Add expense
+│   ├── ExpenseSummaryView.swift     # Category summary
+│   ├── TripSummaryView.swift        # Trip summary
+│   ├── Trip.swift                   # Trip model
+│   ├── Expense.swift                # Expense model
+│   ├── ExpenseCategory.swift        # Category model
+│   ├── TripViewModel.swift          # Trips ViewModel
+│   ├── ExpenseViewModel.swift       # Expenses ViewModel
+│   └── Assets.xcassets/             # App resources
+├── codemagic.yaml                   # CI/CD configuration
+├── metadata/                        # App Store metadata
+├── scripts/                         # Automation scripts
+├── CODEMAGIC_SETUP.md              # Codemagic instructions
+├── QUICK_START.md                  # Quick start guide
+├── PRIVACY.md                      # Privacy policy
+└── TravelExpenses.xcodeproj/        # Xcode project
 ```
 
-## 🚀 Публикация в App Store
+## 🚀 App Store Publication
 
-### Автоматическая публикация через Codemagic
+### Automatic Publication via Codemagic
 
-1. **Подготовка** (5 минут):
+1. **Preparation** (5 minutes):
    ```bash
    ./scripts/create_app_icon.sh
    git add . && git commit -m "Add App Store metadata"
    git push origin main
    ```
 
-2. **Настройка Codemagic**:
-   - Подключите репозиторий на [codemagic.io](https://codemagic.io)
-   - Добавьте переменные окружения (см. `CODEMAGIC_SETUP.md`)
-   - Запустите сборку
+2. **Codemagic Setup**:
+   - Connect repository on [codemagic.io](https://codemagic.io)
+   - Add environment variables (see `CODEMAGIC_SETUP.md`)
+   - Start build
 
-3. **Результат**:
-   - ✅ Автоматическая сборка при каждом push
-   - ✅ Загрузка в TestFlight
-   - ✅ Готовность к публикации в App Store
+3. **Result**:
+   - ✅ Automatic build on each push
+   - ✅ TestFlight upload
+   - ✅ Ready for App Store publication
 
-### Ручная публикация
+### Manual Publication
 
-1. Откройте `TravelExpenses.xcodeproj` в Xcode
-2. Выберите "Any iOS Device" как target
+1. Open `TravelExpenses.xcodeproj` in Xcode
+2. Select "Any iOS Device" as target
 3. Product → Archive
 4. Organizer → Distribute App → App Store Connect
 
-## 🎯 Использование
+## 🎯 Usage
 
-### Добавление поездки:
-1. Перейдите на вкладку "Trips"
-2. Нажмите кнопку "+"
-3. Введите название и даты поездки
-4. Нажмите "Save"
+### Adding a Trip:
+1. Go to "Trips" tab
+2. Press "+" button
+3. Enter trip name and dates
+4. Press "Save"
 
-### Добавление расхода:
-1. Выберите поездку на вкладке "Expenses"
-2. Нажмите кнопку "+"
-3. Введите сумму, описание и выберите категорию
-4. Нажмите "Save"
+### Adding an Expense:
+1. Select trip on "Expenses" tab
+2. Press "+" button
+3. Enter amount, description and select category
+4. Press "Save"
 
-### Просмотр статистики:
-1. Перейдите на вкладку "Summary"
-2. Выберите поездку для детальной статистики
-3. Изучите разбивку по категориям
+### Viewing Statistics:
+1. Go to "Summary" tab
+2. Select trip for detailed statistics
+3. Explore breakdown by categories
 
-## 🔧 Разработка
+## 🔧 Development
 
-### Требования:
+### Requirements:
 - Xcode 15.0+
 - iOS 15.0+
 - macOS 12.0+
 
-### Установка зависимостей:
+### Dependencies:
 ```bash
-# Проект не использует внешние зависимости
-# Все компоненты написаны на чистом SwiftUI
+# Project doesn't use external dependencies
+# All components written in pure SwiftUI
 ```
 
-### Запуск тестов:
+### Running Tests:
 ```bash
-# В Xcode: ⌘+U
-# Или через терминал:
+# In Xcode: ⌘+U
+# Or via terminal:
 xcodebuild test -project TravelExpenses.xcodeproj -scheme TravelExpenses -destination 'platform=iOS Simulator,name=iPhone 15'
 ```
 
-## 📊 Особенности
+## 📊 Features
 
-- **Автосохранение**: Все данные автоматически сохраняются
-- **Цветовое кодирование**: Каждая категория имеет свой цвет
-- **Иконки SF Symbols**: Современные системные иконки
-- **Адаптивный дизайн**: Работает на iPhone и iPad
-- **Локализация**: Интерфейс на русском языке
-- **Офлайн работа**: Не требует интернета
-- **Приватность**: Все данные хранятся локально
+- **Auto-save**: All data automatically saved
+- **Color coding**: Each category has its own color
+- **SF Symbols icons**: Modern system icons
+- **Adaptive design**: Works on iPhone and iPad
+- **Localization**: Interface in English
+- **Offline work**: No internet required
+- **Privacy**: All data stored locally
 
-## 🔒 Конфиденциальность
+## 🔒 Privacy
 
-Приложение **не собирает** личные данные:
-- ✅ Все данные хранятся локально
-- ✅ Нет передачи данных на серверы
-- ✅ Не требует интернета
-- ✅ Подробная политика в `PRIVACY.md`
+The app **does not collect** personal data:
+- ✅ All data stored locally
+- ✅ No data transmission to servers
+- ✅ No internet required
+- ✅ Detailed policy in `PRIVACY.md`
 
-## 🚀 Возможные улучшения
+## 🚀 Possible Improvements
 
-- [ ] Добавление валют и конвертации
-- [ ] Экспорт данных в CSV/PDF
-- [ ] Графики и диаграммы
-- [ ] Планирование бюджета
-- [ ] Синхронизация через iCloud
-- [ ] Поддержка нескольких поездок
-- [ ] Уведомления о превышении бюджета
-- [ ] Интеграция с банковскими приложениями
+- [ ] Add currencies and conversion
+- [ ] Export data to CSV/PDF
+- [ ] Charts and diagrams
+- [ ] Budget planning
+- [ ] iCloud synchronization
+- [ ] Multiple trips support
+- [ ] Budget exceed notifications
+- [ ] Bank app integration
 
-## 📞 Поддержка
+## 📞 Support
 
 - 🐛 [GitHub Issues](https://github.com/your-username/TravelExpenses/issues)
 - 📧 Email: support@yourapp.com
-- 📖 [Документация](CODEMAGIC_SETUP.md)
+- 📖 [Documentation](CODEMAGIC_SETUP.md)
 
-## 📄 Лицензия
+## 📄 License
 
-MIT License - см. файл [LICENSE](LICENSE)
+MIT License - see [LICENSE](LICENSE) file
 
 ---
 
-**Создано с ❤️ для путешественников** ✈️🌍
+**Created with ❤️ for travelers** ✈️🌍

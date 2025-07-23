@@ -1,0 +1,96 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Add a new expense",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Expense Amount",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "$",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "0",
+        "location": {
+          "startingColumn": 47,
+          "startingLine": 71
+        }
+      },
+      {
+        "comment": "",
+        "key": "Description",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "e.g., Lunch at cafe",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 89
+        }
+      },
+      {
+        "comment": "",
+        "key": "Expense Date",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 96
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "Category",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 115
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save Expense",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 169
+        }
+      }
+    ]
+  },
+  "version": 1
+}

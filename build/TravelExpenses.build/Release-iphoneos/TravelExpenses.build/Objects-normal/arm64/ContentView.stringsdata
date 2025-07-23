@@ -1,0 +1,152 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Поездки",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "Расходы",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "Сводка",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Выберите поездку для расходов",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "Нет поездок",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 83
+        }
+      },
+      {
+        "comment": "",
+        "key": "Создайте первую поездку на вкладке 'Поездки'",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ - %@",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 140
+        }
+      },
+      {
+        "comment": "",
+        "key": "Расходы",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 161
+        }
+      },
+      {
+        "comment": "",
+        "key": "Всего: %.2f ₽",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "Нет расходов",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 177
+        }
+      },
+      {
+        "comment": "",
+        "key": "Добавьте первый расход для этой поездки",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 180
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 305
+        }
+      },
+      {
+        "comment": "",
+        "key": " ",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 316
+        }
+      },
+      {
+        "comment": "",
+        "key": "Нет поездок",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 362
+        }
+      },
+      {
+        "comment": "",
+        "key": "Создайте поездку на вкладке \"Поездки\"",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 366
+        }
+      },
+      {
+        "comment": "",
+        "key": "Выберите поездку для сводки",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 378
+        }
+      },
+      {
+        "comment": "",
+        "key": "Выберите поездку",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 410
+        }
+      },
+      {
+        "comment": "",
+        "key": "Выберите поездку выше, чтобы посмотреть сводку",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 414
+        }
+      }
+    ]
+  },
+  "version": 1
+}

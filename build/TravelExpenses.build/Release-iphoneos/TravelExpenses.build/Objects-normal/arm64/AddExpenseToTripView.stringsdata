@@ -1,0 +1,96 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseToTripView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Новый расход",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
+        "key": "Информация о расходе",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 23
+        }
+      },
+      {
+        "comment": "",
+        "key": "Категория",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "Описание",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "Дата",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "Сумма",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "₽",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "0",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Категория",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Отмена",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "Сохранить",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 62
+        }
+      }
+    ]
+  },
+  "version": 1
+}

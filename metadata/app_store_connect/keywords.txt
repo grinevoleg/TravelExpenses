@@ -1,1 +1,1 @@
-расходы,путешествия,бюджет,траты,поездки,учет,финансы,экономия,планирование,категории,статистика,отслеживание,контроль,деньги,затраты,путешественник,бюджет-поездка,учет-расходов,финансовый-контроль,экономия-денег 
+expenses,travel,budget,spending,trips,accounting,finance,savings,planning,categories,statistics,tracking,control,money,costs,traveler,budget-trip,expense-tracker,financial-control,money-saving 

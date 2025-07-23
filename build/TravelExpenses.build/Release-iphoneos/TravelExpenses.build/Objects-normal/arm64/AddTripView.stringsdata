@@ -1,0 +1,136 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddTripView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Создайте новую поездку",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Название поездки",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "Например: Отпуск в Сочи",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Направление",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Например: Сочи, Россия",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "Даты поездки",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 88
+        }
+      },
+      {
+        "comment": "",
+        "key": "Начало",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 94
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 52,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Конец",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 107
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 52,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Укажите планируемый бюджет для отслеживания расходов",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 135
+        }
+      },
+      {
+        "comment": "",
+        "key": "Бюджет (необязательно)",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 119
+        }
+      },
+      {
+        "comment": "",
+        "key": "₽",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 129
+        }
+      },
+      {
+        "comment": "",
+        "key": "0",
+        "location": {
+          "startingColumn": 47,
+          "startingLine": 124
+        }
+      },
+      {
+        "comment": "",
+        "key": "Создать поездку",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 156
+        }
+      },
+      {
+        "comment": "",
+        "key": "Отмена",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 178
+        }
+      }
+    ]
+  },
+  "version": 1
+}

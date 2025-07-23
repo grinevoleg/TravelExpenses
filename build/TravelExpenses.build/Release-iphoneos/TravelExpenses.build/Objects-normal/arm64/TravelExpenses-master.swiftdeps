@@ -1,0 +1,22 @@
+version: "Apple Swift version 6.0.2 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)"
+options: "af5a6c51c1ca30af35ae802b310662c7838dbacb645feaa77efd596c1412269f"
+build_start_time: [1753292762, 410574000]
+build_end_time: [1753292767, 384198000]
+inputs:
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseToTripView.swift": [1752255820, 557837238]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddExpenseView.swift": [1752312062, 116143930]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/AddTripView.swift": [1752311764, 300487246]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ContentView.swift": [1753291169, 663490315]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/Expense.swift": [1752271829, 782184512]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseCategory.swift": [1752255820, 531315915]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseListView.swift": [1753282300, 15655463]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseSummaryView.swift": [1752312006, 13187873]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseViewModel.swift": [1752310439, 217865259]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TravelExpensesApp.swift": [1752255820, 570420433]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/Trip.swift": [1753284138, 854214105]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripDetailView.swift": [1753282310, 796250439]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripListView.swift": [1753292745, 575555696]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripSummaryView.swift": [1753281743, 487295076]
+  "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripViewModel.swift": [1752310178, 662291371]
+  ? "/Users/oleggrinev/Dev/newfactory/TravelExpenses/build/TravelExpenses.build/Release-iphoneos/TravelExpenses.build/DerivedSources/GeneratedAssetSymbols.swift"
+  : [1753287063, 271761437]

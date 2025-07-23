@@ -1,76 +1,76 @@
-# 🚀 Деплой в App Store
+# 🚀 App Store Deployment
 
-## 📋 Чек-лист перед публикацией
+## 📋 Pre-publication Checklist
 
-### ✅ Подготовка приложения
-- [ ] Версия приложения обновлена (1.0.0)
-- [ ] Build number увеличен (1)
-- [ ] Bundle ID настроен правильно
-- [ ] Иконка приложения создана
-- [ ] Метаданные заполнены
+### ✅ App Preparation
+- [ ] App version updated (1.0.0)
+- [ ] Build number increased (1)
+- [ ] Bundle ID configured correctly
+- [ ] App icon created
+- [ ] Metadata filled
 
 ### ✅ App Store Connect
-- [ ] Создано приложение в App Store Connect
-- [ ] Заполнены метаданные
-- [ ] Загружены скриншоты
-- [ ] Настроена политика конфиденциальности
-- [ ] Указана категория приложения
+- [ ] App created in App Store Connect
+- [ ] Metadata filled
+- [ ] Screenshots uploaded
+- [ ] Privacy policy configured
+- [ ] App category specified
 
-### ✅ Сертификаты и профили
-- [ ] Distribution Certificate создан
-- [ ] Provisioning Profile настроен
-- [ ] App Store Connect API Key создан
-- [ ] Team ID указан правильно
+### ✅ Certificates and Profiles
+- [ ] Distribution Certificate created
+- [ ] Provisioning Profile configured
+- [ ] App Store Connect API Key created
+- [ ] Team ID specified correctly
 
-## 🔄 Процесс деплоя
+## 🔄 Deployment Process
 
-### 1. Подготовка кода
+### 1. Code Preparation
 ```bash
-# Убедитесь, что все изменения закоммичены
+# Make sure all changes are committed
 git status
 git add .
 git commit -m "Prepare for App Store release v1.0.0"
 git push origin main
 ```
 
-### 2. Настройка Codemagic
-1. Перейдите на [codemagic.io](https://codemagic.io)
-2. Подключите репозиторий
-3. Добавьте переменные окружения (см. `CODEMAGIC_SETUP.md`)
-4. Запустите первую сборку
+### 2. Codemagic Setup
+1. Go to [codemagic.io](https://codemagic.io)
+2. Connect repository
+3. Add environment variables (see `CODEMAGIC_SETUP.md`)
+4. Start first build
 
-### 3. Мониторинг сборки
-- Следите за логами в реальном времени
-- Проверьте статус сборки
-- Скачайте артефакты (.ipa файл)
+### 3. Build Monitoring
+- Monitor logs in real time
+- Check build status
+- Download artifacts (.ipa file)
 
 ### 4. TestFlight
-1. После успешной сборки приложение появится в App Store Connect
-2. Добавьте внутренних тестеров
-3. Протестируйте приложение
-4. Исправьте найденные баги
+1. After successful build, app will appear in App Store Connect
+2. Add internal testers
+3. Test the app
+4. Fix found bugs
 
-### 5. Публикация в App Store
-1. В App Store Connect перейдите в "App Store"
-2. Заполните все обязательные поля
-3. Отправьте на ревью
-4. Дождитесь одобрения (1-7 дней)
+### 5. App Store Publication
+1. In App Store Connect go to "App Store"
+2. Fill all required fields
+3. Submit for review
+4. Wait for approval (1-7 days)
 
-## 🎯 Переменные окружения для Codemagic
+## 🎯 Environment Variables for Codemagic
 
-### Обязательные
+### Required
 ```
-TEAM_ID = [ваш_team_id]
+TEAM_ID = [your_team_id]
 BUNDLE_ID = com.ifly.TravelExpenses.TravelExpenses
 ```
 
-### Для подписи
+### For Signing
 ```
-BUILD_CERTIFICATE_BASE64 = [base64_сертификата]
-CERTIFICATE_PASSWORD = [пароль_сертификата]
-PROVISIONING_PROFILE_BASE64 = [base64_профиля]
-PROVISIONING_PROFILE_SPECIFIER = [имя_профиля]
-CODE_SIGN_IDENTITY = "iPhone Distribution: [ваше_имя]"
+BUILD_CERTIFICATE_BASE64 = [base64_certificate]
+CERTIFICATE_PASSWORD = [certificate_password]
+PROVISIONING_PROFILE_BASE64 = [base64_profile]
+PROVISIONING_PROFILE_SPECIFIER = [profile_name]
+CODE_SIGN_IDENTITY = "iPhone Distribution: [your_name]"
 ```
 
 ### App Store Connect API
@@ -80,64 +80,64 @@ APP_STORE_CONNECT_API_KEY_ID = [key_id]
 APP_STORE_CONNECT_API_KEY = [private_key]
 ```
 
-## 📊 Мониторинг после публикации
+## 📊 Post-Publication Monitoring
 
-### Метрики для отслеживания
-- Количество загрузок
-- Рейтинг приложения
-- Отзывы пользователей
-- Количество активных пользователей
-- Доходы (если приложение платное)
+### Metrics to Track
+- Number of downloads
+- App rating
+- User reviews
+- Number of active users
+- Revenue (if app is paid)
 
-### Обновления
-- Планируйте регулярные обновления
-- Исправляйте баги быстро
-- Добавляйте новые функции
-- Отслеживайте отзывы пользователей
+### Updates
+- Plan regular updates
+- Fix bugs quickly
+- Add new features
+- Track user feedback
 
-## 🔧 Устранение проблем
+## 🔧 Troubleshooting
 
-### Ошибки сборки
+### Build Errors
 ```bash
-# Проверьте логи в Codemagic
-# Убедитесь, что все переменные настроены
-# Проверьте сертификаты и профили
+# Check logs in Codemagic
+# Make sure all variables are configured
+# Check certificates and profiles
 ```
 
-### Ошибки App Store Connect
+### App Store Connect Errors
 ```bash
-# Проверьте API ключи
-# Убедитесь, что приложение создано в App Store Connect
-# Проверьте метаданные
+# Check API keys
+# Make sure app is created in App Store Connect
+# Check metadata
 ```
 
-### Отклонение ревью
-- Внимательно изучите причины отклонения
-- Исправьте все замечания
-- Отправьте обновленную версию
+### Review Rejection
+- Carefully study rejection reasons
+- Fix all comments
+- Submit updated version
 
-## 📈 Оптимизация
+## 📈 Optimization
 
 ### ASO (App Store Optimization)
-- Оптимизируйте название и описание
-- Используйте релевантные ключевые слова
-- Загружайте качественные скриншоты
-- Получайте положительные отзывы
+- Optimize title and description
+- Use relevant keywords
+- Upload quality screenshots
+- Get positive reviews
 
-### Производительность
-- Оптимизируйте размер приложения
-- Улучшайте время запуска
-- Снижайте потребление памяти
-- Исправляйте краши
+### Performance
+- Optimize app size
+- Improve launch time
+- Reduce memory consumption
+- Fix crashes
 
-## 🎉 Празднование
+## 🎉 Celebration
 
-После успешной публикации:
-- Поделитесь новостью в социальных сетях
-- Расскажите о приложении друзьям и коллегам
-- Соберите обратную связь от первых пользователей
-- Планируйте следующие обновления
+After successful publication:
+- Share news on social media
+- Tell friends and colleagues about the app
+- Collect feedback from first users
+- Plan next updates
 
 ---
 
-**Удачи с публикацией! Ваше приложение скоро будет доступно миллионам пользователей! 🚀📱** 
+**Good luck with publication! Your app will soon be available to millions of users! 🚀📱** 

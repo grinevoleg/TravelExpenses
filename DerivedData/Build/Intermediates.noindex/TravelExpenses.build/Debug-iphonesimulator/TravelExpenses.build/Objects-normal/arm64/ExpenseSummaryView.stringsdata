@@ -1,0 +1,72 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/ExpenseSummaryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "No data for summary",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 48
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add expenses to trips\nto see statistics",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 58
+        }
+      },
+      {
+        "comment": "",
+        "key": "Total Expenses",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "$%lld",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld expense%@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 87
+        }
+      },
+      {
+        "comment": "",
+        "key": "By Category",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "$%lld",
+        "location": {
+          "startingColumn": 58,
+          "startingLine": 129
+        }
+      },
+      {
+        "comment": "",
+        "key": "%.1f%%",
+        "location": {
+          "startingColumn": 62,
+          "startingLine": 135
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,32 @@
+{
+  "source": "/Users/oleggrinev/Dev/newfactory/TravelExpenses/TravelExpenses/TripListView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Добро пожаловать!",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "Создайте свою первую поездку\nи начните отслеживать расходы",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "Создать поездку",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 80
+        }
+      }
+    ]
+  },
+  "version": 1
+}
