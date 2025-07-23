@@ -19,12 +19,39 @@ open TravelExpenses.xcodeproj
 
 ### App Store Publication
 ```bash
-# Create app icon
-./scripts/create_app_icon.sh
+# Create app icon from your file
+./scripts/create_app_icon.sh your_icon.png
 
 # Follow instructions
 open QUICK_START.md
 ```
+
+## 🎨 App Icon Setup
+
+### Quick Setup
+```bash
+# 1. Place your icon file in the project
+cp /path/to/your/icon.png ./my_icon.png
+
+# 2. Create all icon sizes
+./scripts/create_app_icon.sh my_icon.png
+
+# 3. Open project to verify
+open TravelExpenses.xcodeproj
+```
+
+### Requirements
+- **Size**: 1024x1024 pixels (recommended)
+- **Format**: PNG (best quality)
+- **Supported**: PNG, JPG, JPEG, SVG, TIFF
+- **Design**: Square image, no transparency
+
+### What's Created
+- ✅ **App Store icon**: `metadata/app_store_connect/app_icon.png`
+- ✅ **Xcode assets**: All sizes for iPhone & iPad
+- ✅ **Contents.json**: Automatically generated
+
+See [ICON_SETUP.md](ICON_SETUP.md) for detailed instructions.
 
 ## 📱 Features
 
@@ -75,8 +102,11 @@ TravelExpenses/
 ├── codemagic.yaml                   # CI/CD configuration
 ├── metadata/                        # App Store metadata
 ├── scripts/                         # Automation scripts
+│   ├── create_app_icon.sh          # Icon generation
+│   └── test_icon_script.sh         # Icon testing
 ├── CODEMAGIC_SETUP.md              # Codemagic instructions
 ├── QUICK_START.md                  # Quick start guide
+├── ICON_SETUP.md                   # Icon setup guide
 ├── PRIVACY.md                      # Privacy policy
 └── TravelExpenses.xcodeproj/        # Xcode project
 ```
@@ -87,7 +117,9 @@ TravelExpenses/
 
 1. **Preparation** (5 minutes):
    ```bash
-   ./scripts/create_app_icon.sh
+   # Create app icon from your file
+   ./scripts/create_app_icon.sh your_icon.png
+   
    git add . && git commit -m "Add App Store metadata"
    git push origin main
    ```
@@ -189,4 +221,4 @@ MIT License - see [LICENSE](LICENSE) file
 
 ---
 
-**Created with ❤️ for travelers** ✈️🌍
+**Created with ❤️ for travelers** ✈️🌍📱
