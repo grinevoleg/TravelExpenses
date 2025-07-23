@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 enum ExpenseCategory: String, CaseIterable, Identifiable, Codable {
-    case food = "Еда"
-    case transport = "Транспорт"
-    case accommodation = "Жилье"
-    case entertainment = "Развлечения"
+    case food = "Food"
+    case transport = "Transport"
+    case accommodation = "Accommodation"
+    case entertainment = "Entertainment"
     
     var id: String { self.rawValue }
     

@@ -10,6 +10,7 @@ import SwiftUI
 struct TripDetailView: View {
     let trip: Trip
     @ObservedObject var tripViewModel: TripViewModel
+
     @State private var showingAddExpense = false
     @State private var showingDeleteAlert = false
     @State private var showingCompleteAlert = false
@@ -23,63 +24,78 @@ struct TripDetailView: View {
     
     var body: some View {
         ZStack {
-            // Основной фон
-            Color(UIColor.systemGroupedBackground)
+            // Main background
+            Color(.systemBackground)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Красивый градиентный заголовок
+                // Beautiful gradient header
                 GradientHeaderView(
                     title: trip.name,
                     colors: [.blue, .purple]
                 )
                 
-                // Основной контент
+                // Main content
                 ScrollView {
                     VStack(spacing: 20) {
-                        // Информация о поездке
+                        // Trip information
                         tripInfoCard
                         
-                        // Информация о бюджете
+                        // Budget information
                         if trip.budget > 0 {
                             budgetCard
                         }
                         
-                        // Расходы по категориям
+                        // Expenses by category
                         if !trip.expensesByCategory.isEmpty {
                             categoriesCard
                         }
                         
-                        // Список расходов
+                        // Expenses list
                         expensesCard
                     }
                     .padding(.horizontal, 16)
-                    .padding(.top, -30)
-                    .padding(.bottom, 100) // Отступ для плавающей кнопки
+                    .padding(.top, 20)
+                    .padding(.bottom, 100) // Spacing for floating button
                 }
             }
         }
-        .navigationBarHidden(true)
-        .alert("Завершить поездку?", isPresented: $showingCompleteAlert) {
-            Button("Отмена", role: .cancel) { }
-            Button("Завершить", role: .destructive) {
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 16, weight: .medium))
+                        Text("Back")
+                            .font(.system(size: 16, weight: .medium))
+                    }
+                    .foregroundColor(.white)
+                }
+            }
+        }
+        .alert("Complete trip?", isPresented: $showingCompleteAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Complete", role: .destructive) {
                 tripViewModel.completeTrip(trip)
                 dismiss()
             }
         } message: {
-            Text("Поездка будет отмечена как завершенная.")
+            Text("The trip will be marked as completed.")
         }
-        .alert("Удалить поездку?", isPresented: $showingDeleteAlert) {
-            Button("Отмена", role: .cancel) { }
-            Button("Удалить", role: .destructive) {
+        .alert("Delete trip?", isPresented: $showingDeleteAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete", role: .destructive) {
                 tripViewModel.deleteTrip(trip)
                 dismiss()
             }
         } message: {
-            Text("Поездка и все её расходы будут удалены безвозвратно.")
+            Text("The trip and all its expenses will be permanently deleted.")
         }
         .overlay(alignment: .bottomTrailing) {
-            // Красивая плавающая кнопка добавления расхода
+            // Beautiful floating add expense button
             Button {
                 showingAddExpense = true
             } label: {
@@ -87,7 +103,7 @@ struct TripDetailView: View {
                     Image(systemName: "plus")
                         .font(.title3)
                         
-                    Text("Расход")
+                    Text("Expense")
                         
                 }
                 .foregroundColor(.white)
@@ -119,7 +135,7 @@ struct TripDetailView: View {
         VStack(spacing: 16) {
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Направление")
+                    Text("Destination")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
@@ -133,7 +149,7 @@ struct TripDetailView: View {
                 
                 Spacer()
                 
-                // Статус поездки
+                // Trip status
                 statusBadge
             }
             
@@ -141,7 +157,7 @@ struct TripDetailView: View {
             
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Начало")
+                    Text("Start")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text(trip.startDate, formatter: dateFormatter)
@@ -157,7 +173,7 @@ struct TripDetailView: View {
                 Spacer()
                 
                 VStack(alignment: .trailing, spacing: 4) {
-                    Text("Конец")
+                    Text("End")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text(trip.endDate, formatter: dateFormatter)
@@ -194,13 +210,13 @@ struct TripDetailView: View {
     
     private var tripStatus: (text: String, colors: [Color]) {
         if trip.isCompleted {
-            return ("Завершена", [.gray, .gray.opacity(0.6)])
+            return ("Completed", [.gray, .gray.opacity(0.6)])
         } else if trip.startDate > Date() {
-            return ("Запланирована", [.orange, .yellow])
+            return ("Planned", [.orange, .yellow])
         } else if trip.endDate < Date() {
-            return ("Прошедшая", [.red, .pink])
+            return ("Past", [.red, .pink])
         } else {
-            return ("Активная", [.green, .blue])
+            return ("Active", [.green, .blue])
         }
     }
 
@@ -208,7 +224,7 @@ struct TripDetailView: View {
     private var budgetCard: some View {
         VStack(spacing: 16) {
             HStack {
-                Text("Бюджет")
+                Text("Budget")
                     .font(.headline)
                     .foregroundColor(.primary)
                 Spacer()
@@ -216,10 +232,10 @@ struct TripDetailView: View {
             
             HStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Запланировано")
+                    Text("Planned")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("\(Int(trip.budget)) ₽")
+                    Text("$\(Int(trip.budget))")
                         .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundColor(.blue)
@@ -228,10 +244,10 @@ struct TripDetailView: View {
                 Spacer()
                 
                 VStack(alignment: .center, spacing: 4) {
-                    Text("Потрачено")
+                    Text("Spent")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("\(Int(trip.totalAmount)) ₽")
+                    Text("$\(Int(trip.totalAmount))")
                         .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundColor(.orange)
@@ -240,17 +256,17 @@ struct TripDetailView: View {
                 Spacer()
                 
                 VStack(alignment: .trailing, spacing: 4) {
-                    Text("Остаток")
+                    Text("Remaining")
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    Text("\(Int(trip.remainingBudget)) ₽")
+                    Text("$\(Int(trip.remainingBudget))")
                         .font(.title3)
                         .fontWeight(.semibold)
                         .foregroundColor(trip.remainingBudget >= 0 ? .green : .red)
                 }
             }
             
-            // Прогресс бар
+            // Progress bar
             ProgressView(value: min(trip.budgetUsagePercentage, 100), total: 100)
                 .progressViewStyle(LinearProgressViewStyle(tint: trip.budgetUsagePercentage > 100 ? .red : .blue))
                 .scaleEffect(x: 1, y: 2, anchor: .center)
@@ -266,7 +282,7 @@ struct TripDetailView: View {
     // MARK: - Categories Card
     private var categoriesCard: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("По категориям")
+            Text("By Category")
                 .font(.headline)
                 .foregroundColor(.primary)
             
@@ -274,28 +290,41 @@ struct TripDetailView: View {
                 ForEach(Array(trip.expensesByCategory.keys), id: \.self) { category in
                     let amount = trip.expensesByCategory[category] ?? 0
                     
-                    VStack(spacing: 8) {
+                    VStack(spacing: 12) {
+                        // Icon and category name
                         HStack {
-                            Text(category.icon)
-                                .font(.title2)
+                            ZStack {
+                                Circle()
+                                    .fill(category.color.opacity(0.2))
+                                    .frame(width: 36, height: 36)
+                                
+                                Image(systemName: category.icon)
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(category.color)
+                            }
+                            
                             Text(category.rawValue)
                                 .font(.subheadline)
                                 .fontWeight(.medium)
+                                .foregroundColor(.primary)
+                            
                             Spacer()
                         }
                         
+                        // Amount
                         HStack {
-                            Text("\(Int(amount)) ₽")
+                            Text("$\(Int(amount))")
                                 .font(.title3)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.primary)
                             Spacer()
                         }
                     }
-                    .padding(12)
+                    .padding(16)
                     .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(category.color.opacity(0.1))
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color(.systemBackground))
+                            .shadow(color: category.color.opacity(0.1), radius: 8, x: 0, y: 4)
                     )
                 }
             }
@@ -312,14 +341,14 @@ struct TripDetailView: View {
     private var expensesCard: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text("Расходы")
+                Text("Expenses")
                     .font(.headline)
                     .foregroundColor(.primary)
                 
                 Spacer()
                 
                 if !trip.expenses.isEmpty {
-                    Text("\(trip.expenses.count) расход\(trip.expenses.count == 1 ? "" : trip.expenses.count < 5 ? "а" : "ов")")
+                    Text("\(trip.expenses.count) expense\(trip.expenses.count == 1 ? "" : "s")")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -331,11 +360,11 @@ struct TripDetailView: View {
                         .font(.system(size: 40))
                         .foregroundColor(.gray.opacity(0.6))
                     
-                    Text("Расходов пока нет")
+                    Text("No expenses yet")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
-                    Text("Нажмите кнопку \"+\" чтобы добавить первый расход")
+                    Text("Tap the \"+\" button to add your first expense")
                         .font(.caption)
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
@@ -370,7 +399,7 @@ struct EnhancedExpenseRowView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            // Иконка категории
+            // Category icon
             ZStack {
                 Circle()
                     .fill(expense.category.color.opacity(0.2))
@@ -381,7 +410,7 @@ struct EnhancedExpenseRowView: View {
                     .foregroundColor(expense.category.color)
             }
             
-            // Информация о расходе
+            // Expense information
             VStack(alignment: .leading, spacing: 4) {
                 Text(expense.description)
                     .font(.subheadline)
@@ -403,8 +432,8 @@ struct EnhancedExpenseRowView: View {
             
             Spacer()
             
-            // Сумма
-            Text("\(Int(expense.amount)) ₽")
+            // Amount
+            Text("$\(Int(expense.amount))")
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.primary)

@@ -10,6 +10,7 @@ import SwiftUI
 struct AddExpenseView: View {
     @EnvironmentObject var expenseViewModel: ExpenseViewModel
     @Environment(\.dismiss) private var dismiss
+
     
     @State private var amount: String = ""
     @State private var description: String = ""
@@ -18,21 +19,21 @@ struct AddExpenseView: View {
     
     var body: some View {
         ZStack {
-            // Основной фон
-            Color(UIColor.systemGroupedBackground)
+            // Main background
+            Color(.systemBackground)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Красивый градиентный заголовок
+                // Beautiful gradient header
                 GradientHeaderView(
-                    title: "Новый расход",
+                    title: "New Expense",
                     colors: [.green, .orange]
                 )
                 
-                // Основной контент
+                // Main content
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Красивая иконка заголовка
+                        // Beautiful header icon
                         VStack(spacing: 16) {
                             ZStack {
                                 Circle()
@@ -51,18 +52,18 @@ struct AddExpenseView: View {
                                     .foregroundColor(.white)
                             }
                             
-                            Text("Добавьте новый расход")
+                            Text("Add a new expense")
                                 .font(.title3)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
                         }
                         .padding(.top, -10)
                         
-                        // Форма ввода
+                        // Input form
                         VStack(spacing: 20) {
-                            // Сумма
+                            // Amount
                             VStack(alignment: .leading, spacing: 8) {
-                                Label("Сумма расхода", systemImage: "rublesign.circle")
+                                Label("Expense Amount", systemImage: "dollarsign.circle")
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                 
@@ -72,27 +73,27 @@ struct AddExpenseView: View {
                                         .keyboardType(.numberPad)
                                         .font(.body)
                                     
-                                    Text("₽")
+                                    Text("$")
                                         .font(.title3)
                                         .foregroundColor(.secondary)
                                         .padding(.leading, 8)
                                 }
                             }
                             
-                            // Описание
+                            // Description
                             VStack(alignment: .leading, spacing: 8) {
-                                Label("Описание", systemImage: "text.cursor")
+                                Label("Description", systemImage: "text.cursor")
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                 
-                                TextField("Например: Обед в кафе", text: $description)
+                                TextField("e.g., Lunch at cafe", text: $description)
                                     .textFieldStyle(RoundedBorderTextFieldStyle())
                                     .font(.body)
                             }
                             
-                            // Дата
+                            // Date
                             VStack(alignment: .leading, spacing: 8) {
-                                Label("Дата расхода", systemImage: "calendar")
+                                Label("Expense Date", systemImage: "calendar")
                                     .font(.headline)
                                     .foregroundColor(.primary)
                                 
@@ -109,9 +110,9 @@ struct AddExpenseView: View {
                                 .shadow(color: .black.opacity(0.08), radius: 12, x: 0, y: 6)
                         )
                         
-                        // Выбор категории
+                        // Category selection
                         VStack(alignment: .leading, spacing: 16) {
-                            Label("Категория", systemImage: "tag")
+                            Label("Category", systemImage: "tag")
                                 .font(.headline)
                                 .foregroundColor(.primary)
                             
@@ -134,16 +135,16 @@ struct AddExpenseView: View {
                                 .shadow(color: .black.opacity(0.08), radius: 12, x: 0, y: 6)
                         )
                         
-                        // Кнопки
+                        // Buttons
                         VStack(spacing: 12) {
-                            // Кнопка сохранения
+                            // Save button
                             Button {
                                 saveExpense()
                             } label: {
                                 HStack {
                                     Image(systemName: "checkmark.circle.fill")
                                         .font(.title3)
-                                    Text("Сохранить расход")
+                                    Text("Save Expense")
                                         .font(.headline)
                                 }
                                 .foregroundColor(.white)
@@ -161,11 +162,11 @@ struct AddExpenseView: View {
                             }
                             .disabled(!isValidInput)
                             
-                            // Кнопка отмены
+                            // Cancel button
                             Button {
                                 dismiss()
                             } label: {
-                                Text("Отмена")
+                                Text("Cancel")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                                     .frame(maxWidth: .infinity)
@@ -222,7 +223,7 @@ struct CategoryCard: View {
     var body: some View {
         Button(action: onTap) {
             VStack(spacing: 12) {
-                // Иконка
+                // Icon
                 ZStack {
                     Circle()
                         .fill(
@@ -237,14 +238,14 @@ struct CategoryCard: View {
                         .foregroundColor(isSelected ? .white : category.color)
                 }
                 
-                // Название
-                                             Text(category.rawValue)
-                                .font(.subheadline)
-                                .fontWeight(.medium)
+                // Name
+                Text(category.rawValue)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
                     .foregroundColor(isSelected ? .primary : .secondary)
                     .multilineTextAlignment(.center)
                 
-                // Индикатор выбора
+                // Selection indicator
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.title3)

@@ -12,21 +12,21 @@ struct ExpenseSummaryView: View {
     
     var body: some View {
         ZStack {
-            // Основной фон
+            // Main background
             Color(UIColor.systemGroupedBackground)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Красивый градиентный заголовок
+                // Beautiful gradient header
                 GradientHeaderView(
-                    title: "Сводка расходов",
-                    colors: [.orange, .red]
+                    title: "Expense Summary",
+                    colors: [Color.orange, Color.red]
                 )
                 
-                // Основной контент
+                // Main content
                 if expenseViewModel.expenses.isEmpty {
                     VStack(spacing: 24) {
-                        // Красивая иконка с анимацией
+                        // Beautiful animated icon
                         ZStack {
                             Circle()
                                 .fill(
@@ -45,17 +45,17 @@ struct ExpenseSummaryView: View {
                         }
                         
                         VStack(spacing: 12) {
-                            Text("Нет данных для сводки")
+                            Text("No data for summary")
                                 .font(.title)
                                 .foregroundStyle(
                                     LinearGradient(
-                                        colors: [.orange, .red],
+                                        colors: [Color.orange, Color.red],
                                         startPoint: .leading,
                                         endPoint: .trailing
                                     )
                                 )
                             
-                            Text("Добавьте расходы в поездки\nчтобы увидеть статистику")
+                            Text("Add expenses to trips\nto see statistics")
                                 .font(.body)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
@@ -67,24 +67,24 @@ struct ExpenseSummaryView: View {
                 } else {
                     ScrollView {
                         VStack(spacing: 20) {
-                            // Общая сумма
+                            // Total amount
                             VStack(spacing: 12) {
-                                Text("Общие расходы")
+                                Text("Total Expenses")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                                 
-                                Text("\(Int(expenseViewModel.totalAmount)) ₽")
+                                Text("$\(Int(expenseViewModel.totalAmount))")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                     .foregroundStyle(
                                         LinearGradient(
-                                            colors: [.orange, .red],
+                                            colors: [Color.orange, Color.red],
                                             startPoint: .leading,
                                             endPoint: .trailing
                                         )
                                     )
                                 
-                                Text("\(expenseViewModel.expenses.count) расход\(expenseViewModel.expenses.count == 1 ? "" : expenseViewModel.expenses.count < 5 ? "а" : "ов")")
+                                Text("\(expenseViewModel.expenses.count) expense\(expenseViewModel.expenses.count == 1 ? "" : "s")")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -97,10 +97,10 @@ struct ExpenseSummaryView: View {
                             .padding(.horizontal, 16)
                             .padding(.top, -30)
                             
-                            // Сводка по категориям
+                            // Summary by category
                             VStack(alignment: .leading, spacing: 16) {
                                 HStack {
-                                    Text("По категориям")
+                                    Text("By Category")
                                         .font(.headline)
                                         .foregroundColor(.primary)
                                     Spacer()
@@ -113,20 +113,20 @@ struct ExpenseSummaryView: View {
                                         let percentage = expenseViewModel.totalAmount > 0 ? (amount / expenseViewModel.totalAmount) * 100 : 0
                                         
                                         VStack(spacing: 12) {
-                                            // Иконка и название
+                                            // Icon and name
                                             HStack {
                                                 Text(category.icon)
                                                     .font(.title2)
-                                                                                                 Text(category.rawValue)
+                                                Text(category.rawValue)
                                                     .font(.subheadline)
                                                     .fontWeight(.medium)
                                                 Spacer()
                                             }
                                             
-                                            // Сумма и процент
+                                            // Amount and percentage
                                             VStack(alignment: .leading, spacing: 4) {
                                                 HStack {
-                                                    Text("\(Int(amount)) ₽")
+                                                    Text("$\(Int(amount))")
                                                         .font(.title3)
                                                         .fontWeight(.semibold)
                                                         .foregroundColor(.primary)
@@ -139,7 +139,7 @@ struct ExpenseSummaryView: View {
                                                 }
                                                 
                                                 if amount > 0 {
-                                                    // Прогресс бар
+                                                    // Progress bar
                                                     ProgressView(value: percentage, total: 100)
                                                         .progressViewStyle(LinearProgressViewStyle(tint: category.color))
                                                         .scaleEffect(x: 1, y: 1.5, anchor: .center)

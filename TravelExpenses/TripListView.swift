@@ -27,19 +27,28 @@ struct GradientHeaderView: View {
 
 struct TripListView: View {
     @ObservedObject var tripViewModel: TripViewModel
+
     @State private var isAddTripPresented = false
+    @State private var selectedTrip: Trip?
     
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            Color(UIColor.systemGroupedBackground)
-                .ignoresSafeArea()
-            VStack(spacing: 0) {
-                GradientHeaderView(
-                    title: "Мои Поездки",
-                    colors: [.blue, .purple]
-                )
+        NavigationView {
+            ZStack(alignment: .bottomTrailing) {
+                Color(.systemBackground)
+                    .ignoresSafeArea()
+                VStack(spacing: 0) {
+                    HStack {
+                        GradientHeaderView(
+                            title: "My Trips",
+                            colors: [.blue, .purple]
+                        )
+                        
+                        Spacer()
+                        
+
+                    }
                 if tripViewModel.trips.isEmpty {
-                    // ... прежний приветственный экран ...
+                    // ... previous welcome screen ...
                     VStack(spacing: 24) {
                         ZStack {
                             Circle()
@@ -57,7 +66,7 @@ struct TripListView: View {
                                 .foregroundColor(.white)
                         }
                         VStack(spacing: 12) {
-                            Text("Добро пожаловать!")
+                            Text("Welcome!")
                                 .font(.system(size: 28, weight: .bold))
                                 .foregroundStyle(
                                     LinearGradient(
@@ -66,7 +75,7 @@ struct TripListView: View {
                                         endPoint: .trailing
                                     )
                                 )
-                            Text("Создайте свою первую поездку\nи начните отслеживать расходы")
+                            Text("Create your first trip\nand start tracking expenses")
                                 .font(.body)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
@@ -78,7 +87,7 @@ struct TripListView: View {
                             HStack(spacing: 12) {
                                 Image(systemName: "plus.circle.fill")
                                     .font(.title2)
-                                Text("Создать поездку")
+                                Text("Create Trip")
                                     .font(.system(size: 16, weight: .semibold))
                             }
                             .foregroundColor(.white)
@@ -100,58 +109,74 @@ struct TripListView: View {
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    // --- Исправленный ScrollView ---
+                    // --- Fixed ScrollView ---
                     ScrollView(showsIndicators: false) {
                         VStack(spacing: 24) {
                             if !tripViewModel.activeTrips.isEmpty {
                                 SectionCard(
                                     icon: "star.fill",
                                     iconGradient: [.blue, .purple],
-                                    title: "АКТИВНЫЕ ПОЕЗДКИ",
+                                    title: "ACTIVE TRIPS",
                                     titleGradient: [.blue, .purple],
                                     trips: tripViewModel.activeTrips,
-                                    cardGradient: [Color.blue.opacity(0.05), Color.purple.opacity(0.05)]
+                                    cardGradient: [Color.blue.opacity(0.05), Color.purple.opacity(0.05)],
+                                    tripViewModel: tripViewModel,
+                                    onTripSelected: { trip in
+                                        selectedTrip = trip
+                                    }
                                 )
                             }
                             if !tripViewModel.upcomingTrips.isEmpty {
                                 SectionCard(
                                     icon: "calendar.badge.clock",
                                     iconGradient: [.orange, .yellow],
-                                    title: "ЗАПЛАНИРОВАННЫЕ ПОЕЗДКИ",
+                                    title: "UPCOMING TRIPS",
                                     titleGradient: [.orange, .yellow],
                                     trips: tripViewModel.upcomingTrips,
-                                    cardGradient: [Color.orange.opacity(0.05), Color.yellow.opacity(0.05)]
+                                    cardGradient: [Color.orange.opacity(0.05), Color.yellow.opacity(0.05)],
+                                    tripViewModel: tripViewModel,
+                                    onTripSelected: { trip in
+                                        selectedTrip = trip
+                                    }
                                 )
                             }
                             if !tripViewModel.pastTrips.isEmpty {
                                 SectionCard(
                                     icon: "clock.arrow.circlepath",
                                     iconGradient: [.red, .pink],
-                                    title: "ПРОШЕДШИЕ ПОЕЗДКИ",
+                                    title: "PAST TRIPS",
                                     titleGradient: [.red, .pink],
                                     trips: tripViewModel.pastTrips,
-                                    cardGradient: [Color.red.opacity(0.05), Color.pink.opacity(0.05)]
+                                    cardGradient: [Color.red.opacity(0.05), Color.pink.opacity(0.05)],
+                                    tripViewModel: tripViewModel,
+                                    onTripSelected: { trip in
+                                        selectedTrip = trip
+                                    }
                                 )
                             }
                             if !tripViewModel.completedTrips.isEmpty {
                                 SectionCard(
                                     icon: "checkmark.seal.fill",
                                     iconGradient: [.green, .mint],
-                                    title: "ЗАВЕРШЕННЫЕ ПОЕЗДКИ",
+                                    title: "COMPLETED TRIPS",
                                     titleGradient: [.green, .mint],
                                     trips: tripViewModel.completedTrips,
-                                    cardGradient: [Color.green.opacity(0.05), Color.mint.opacity(0.05)]
+                                    cardGradient: [Color.green.opacity(0.05), Color.mint.opacity(0.05)],
+                                    tripViewModel: tripViewModel,
+                                    onTripSelected: { trip in
+                                        selectedTrip = trip
+                                    }
                                 )
                             }
                             Spacer(minLength: 32)
                         }
                         .padding(.top, 0)
                         .padding(.horizontal, 8)
-                        .padding(.bottom, 32) // чтобы не перекрывалось кнопкой
+                        .padding(.bottom, 32) // so it doesn't overlap with the button
                     }
                 }
             }
-            // --- Плавающая кнопка ---
+            // --- Floating button ---
             if !tripViewModel.trips.isEmpty {
                 Button {
                     isAddTripPresented = true
@@ -177,13 +202,28 @@ struct TripListView: View {
         .sheet(isPresented: $isAddTripPresented) {
             AddTripView(tripViewModel: tripViewModel)
         }
+        .background(
+            NavigationLink(
+                destination: selectedTrip != nil ? TripDetailView(trip: selectedTrip!, tripViewModel: tripViewModel) : nil,
+                isActive: Binding(
+                    get: { selectedTrip != nil },
+                    set: { if !$0 { selectedTrip = nil } }
+                )
+            ) {
+                EmptyView()
+            }
+            .opacity(0)
+            .allowsHitTesting(false)
+        )
         .onAppear {
             tripViewModel.loadTrips()
         }
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-// --- Улучшенный компонент для секций ---
+// --- Enhanced section component ---
 struct SectionCard: View {
     let icon: String
     let iconGradient: [Color]
@@ -191,10 +231,12 @@ struct SectionCard: View {
     let titleGradient: [Color]
     let trips: [Trip]
     let cardGradient: [Color]
+    let tripViewModel: TripViewModel
+    let onTripSelected: (Trip) -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            // Заголовок секции с улучшенным дизайном
+            // Section header with enhanced design
             HStack(spacing: 12) {
                 ZStack {
                     Circle()
@@ -228,10 +270,17 @@ struct SectionCard: View {
             .padding(.top, 20)
             .padding(.bottom, 16)
             
-            // Список поездок с улучшенным дизайном
+            // Trip list with enhanced design
             VStack(alignment: .leading, spacing: 12) {
                 ForEach(trips) { trip in
-                    TripCard(trip: trip, gradientColors: iconGradient)
+                    TripCard(
+                        trip: trip, 
+                        gradientColors: iconGradient, 
+                        tripViewModel: tripViewModel,
+                        onTap: {
+                            onTripSelected(trip)
+                        }
+                    )
                 }
             }
             .padding(.horizontal, 16)
@@ -269,15 +318,17 @@ struct SectionCard: View {
     }
 }
 
-// --- Новый компонент для карточек поездок ---
+// --- New trip card component ---
 struct TripCard: View {
     let trip: Trip
     let gradientColors: [Color]
     @State private var isPressed = false
+    @ObservedObject var tripViewModel: TripViewModel
+    let onTap: () -> Void
     
     var body: some View {
         HStack(spacing: 12) {
-            // Иконка поездки
+            // Trip icon
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(
@@ -300,7 +351,7 @@ struct TripCard: View {
                     )
             }
             
-            // Информация о поездке
+            // Trip information
             VStack(alignment: .leading, spacing: 4) {
                 Text(trip.name)
                     .font(.system(size: 16, weight: .semibold))
@@ -313,7 +364,7 @@ struct TripCard: View {
             
             Spacer()
             
-            // Индикатор статуса
+            // Status indicator
             Circle()
                 .fill(
                     LinearGradient(
@@ -324,16 +375,58 @@ struct TripCard: View {
                 )
                 .frame(width: 8, height: 8)
                 .shadow(color: gradientColors[0].opacity(0.3), radius: 2, x: 0, y: 1)
+            
+            // Action button
+            Menu {
+                if !trip.isCompleted {
+                    Button(action: {
+                        tripViewModel.completeTrip(trip)
+                    }) {
+                        Label("Mark as Completed", systemImage: "checkmark.circle")
+                    }
+                } else {
+                    Button(action: {
+                        tripViewModel.reopenTrip(trip)
+                    }) {
+                        Label("Reopen Trip", systemImage: "arrow.clockwise.circle")
+                    }
+                }
+                
+                Button(role: .destructive, action: {
+                    tripViewModel.deleteTrip(trip)
+                }) {
+                    Label("Delete Trip", systemImage: "trash")
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: gradientColors,
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .frame(width: 32, height: 32)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(gradientColors[0].opacity(0.1))
+                    )
+            }
+            .onTapGesture {
+                // Предотвращаем срабатывание onTapGesture карточки
+            }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color(.systemBackground))
-                .shadow(color: .black.opacity(0.04), radius: 6, x: 0, y: 2)
+                .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 2)
         )
         .scaleEffect(isPressed ? 0.98 : 1.0)
         .animation(.easeInOut(duration: 0.1), value: isPressed)
+        .contentShape(Rectangle())
         .onTapGesture {
             withAnimation(.easeInOut(duration: 0.1)) {
                 isPressed = true
@@ -343,6 +436,8 @@ struct TripCard: View {
                     isPressed = false
                 }
             }
+            onTap()
         }
+
     }
 }

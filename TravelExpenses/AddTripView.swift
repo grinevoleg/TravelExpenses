@@ -10,6 +10,7 @@ import SwiftUI
 struct AddTripView: View {
     @ObservedObject var tripViewModel: TripViewModel
     @Environment(\.dismiss) var dismiss
+
     
     @State private var tripName = ""
     @State private var destination = ""
@@ -20,18 +21,18 @@ struct AddTripView: View {
     
     var body: some View {
         ZStack {
-            // Основной фон
-            Color(UIColor.systemGroupedBackground)
+            // Main background
+            Color(.systemBackground)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Красивый градиентный заголовок
+                // Beautiful gradient header
                 GradientHeaderView(
-                    title: "Новая поездка",
+                    title: "New Trip",
                     colors: [.blue, .purple]
                 )
                 
-                // Основной контент
+                // Main content
                 ScrollView {
                     VStack(spacing: 24) {
                         headerIconSection
@@ -66,12 +67,12 @@ struct AddTripView: View {
                     .frame(width: 80, height: 80)
                     .shadow(color: .blue.opacity(0.3), radius: 15, x: 0, y: 8)
                 
-                Image(systemName: "airplane.departure")
+                Image(systemName: "plus")
                     .font(.system(size: 32, weight: .medium))
                     .foregroundColor(.white)
             }
             
-            Text("Создайте новую поездку")
+            Text("Create a new trip")
                 .font(.title3)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
@@ -81,26 +82,26 @@ struct AddTripView: View {
     
     private var formSection: some View {
         VStack(spacing: 20) {
-            // Название поездки
+            // Trip name
             InputField(
                 icon: "text.cursor",
-                title: "Название поездки",
-                placeholder: "Например: Отпуск в Сочи",
+                title: "Trip Name",
+                placeholder: "e.g., Vacation in Berlin",
                 text: $tripName
             )
             
-            // Направление
+            // Destination
             InputField(
                 icon: "paperplane.fill",
-                title: "Направление",
-                placeholder: "Например: Сочи, Россия",
+                title: "Destination",
+                placeholder: "e.g., Berlin, Germany",
                 text: $destination
             )
             
-            // Даты
+            // Dates
             datesSection
             
-            // Бюджет
+            // Budget
             budgetSection
         }
         .padding(20)
@@ -118,14 +119,14 @@ struct AddTripView: View {
                             endPoint: .trailing
                         )
                     )
-                Text("Даты поездки")
+                Text("Trip Dates")
                     .font(.headline)
                     .foregroundColor(.primary)
             }
             
             HStack(spacing: 16) {
                 DateField(
-                    title: "Начало",
+                    title: "Start",
                     date: $startDate,
                     range: nil
                 )
@@ -135,7 +136,7 @@ struct AddTripView: View {
                     .padding(.top, 16)
                 
                 DateField(
-                    title: "Конец",
+                    title: "End",
                     date: $endDate,
                     range: startDate...Date.distantFuture
                 )
@@ -146,7 +147,7 @@ struct AddTripView: View {
     private var budgetSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 8) {
-                Image(systemName: "rublesign.circle.fill")
+                Image(systemName: "dollarsign.circle.fill")
                     .foregroundStyle(
                         LinearGradient(
                             colors: [.green, .mint],
@@ -154,7 +155,7 @@ struct AddTripView: View {
                             endPoint: .trailing
                         )
                     )
-                Text("Бюджет (необязательно)")
+                Text("Budget (optional)")
                     .font(.headline)
                     .foregroundColor(.primary)
             }
@@ -165,13 +166,13 @@ struct AddTripView: View {
                     .keyboardType(.decimalPad)
                     .font(.body)
                 
-                Text("₽")
+                Text("$")
                     .font(.title3)
                     .foregroundColor(.secondary)
                     .padding(.leading, 8)
             }
             
-            Text("Укажите планируемый бюджет для отслеживания расходов")
+            Text("Set a planned budget to track expenses")
                 .font(.caption)
                 .foregroundColor(.gray)
         }
@@ -202,7 +203,7 @@ struct AddTripView: View {
     
     private var buttonsSection: some View {
         VStack(spacing: 12) {
-            // Кнопка создания
+            // Create button
             Button {
                 withAnimation(.easeInOut(duration: 0.2)) {
                     isCreating = true
@@ -218,7 +219,7 @@ struct AddTripView: View {
                         Image(systemName: "plus.circle.fill")
                             .font(.title3)
                     }
-                    Text(isCreating ? "Создание..." : "Создать поездку")
+                    Text(isCreating ? "Creating..." : "Create Trip")
                         .font(.headline)
                 }
                 .foregroundColor(.white)
@@ -231,11 +232,11 @@ struct AddTripView: View {
             }
             .disabled(!canCreateTrip || isCreating)
             
-            // Кнопка отмены
+            // Cancel button
             Button {
                 dismiss()
             } label: {
-                Text("Отмена")
+                Text("Cancel")
                     .font(.headline)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity)
@@ -286,7 +287,7 @@ struct AddTripView: View {
     }
 }
 
-// MARK: - Вспомогательные компоненты
+// MARK: - Helper Components
 
 struct InputField: View {
     let icon: String
@@ -336,7 +337,7 @@ struct DateField: View {
                     .padding(.vertical, 8)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(UIColor.secondarySystemBackground))
+                            .fill(Color(.systemGray6))
                     )
             } else {
                 DatePicker("", selection: $date, displayedComponents: .date)
@@ -346,7 +347,7 @@ struct DateField: View {
                     .padding(.vertical, 8)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(UIColor.secondarySystemBackground))
+                            .fill(Color(.systemGray6))
                     )
             }
         }
@@ -360,11 +361,11 @@ struct ModernTextFieldStyle: TextFieldStyle {
             .padding(.vertical, 12)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(UIColor.secondarySystemBackground))
+                    .fill(Color(.systemGray6))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                    .stroke(Color(.systemGray4), lineWidth: 1)
             )
     }
 }

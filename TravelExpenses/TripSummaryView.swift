@@ -17,9 +17,9 @@ struct TripSummaryView: View {
     }
     
     var body: some View {
-        // Основной контент без дублирования заголовка и фона
+        // Main content without duplicating header and background
         VStack(spacing: 20) {
-            // Информация о поездке
+            // Trip information
             tripOverviewSection
             
             if !trip.expensesByCategory.isEmpty {
@@ -65,9 +65,9 @@ struct TripSummaryView: View {
                 
                 Spacer()
                 
-                // Общая сумма
+                // Total amount
                 VStack(spacing: 8) {
-                    Text("\(Int(trip.totalAmount)) ₽")
+                    Text("$\(Int(trip.totalAmount))")
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundStyle(
@@ -78,7 +78,7 @@ struct TripSummaryView: View {
                             )
                         )
                     
-                    Text("Общие расходы")
+                    Text("Total Expenses")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
@@ -95,7 +95,7 @@ struct TripSummaryView: View {
     // MARK: - Category Chart Section
     private var categoryChartSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Расходы по категориям")
+            Text("Expenses by Category")
                 .font(.headline)
                 .foregroundColor(.primary)
             
@@ -105,7 +105,7 @@ struct TripSummaryView: View {
                     let percentage = trip.totalAmount > 0 ? (amount / trip.totalAmount) * 100 : 0
                     
                     VStack(spacing: 12) {
-                        // Иконка и название
+                        // Icon and name
                         HStack {
                             Image(systemName: category.icon)
                                 .font(.title2)
@@ -116,10 +116,10 @@ struct TripSummaryView: View {
                             Spacer()
                         }
                         
-                        // Сумма и процент
+                        // Amount and percentage
                         VStack(alignment: .leading, spacing: 4) {
                             HStack {
-                                Text("\(Int(amount)) ₽")
+                                Text("$\(Int(amount))")
                                     .font(.title3)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
@@ -129,7 +129,7 @@ struct TripSummaryView: View {
                                     .foregroundColor(.secondary)
                             }
                             
-                            // Прогресс бар
+                            // Progress bar
                             ProgressView(value: percentage, total: 100)
                                 .progressViewStyle(LinearProgressViewStyle(tint: category.color))
                                 .scaleEffect(x: 1, y: 1.5, anchor: .center)
@@ -154,7 +154,7 @@ struct TripSummaryView: View {
     // MARK: - Daily Expenses Section
     private var dailyExpensesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Расходы по дням")
+            Text("Daily Expenses")
                 .font(.headline)
                 .foregroundColor(.primary)
             
@@ -163,7 +163,7 @@ struct TripSummaryView: View {
                 .sorted { $0.key > $1.key }
             
             if dailyExpenses.isEmpty {
-                Text("Нет данных о расходах")
+                Text("No expense data")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .padding(.vertical, 20)
@@ -183,7 +183,7 @@ struct TripSummaryView: View {
                             
                             Spacer()
                             
-                            Text("\(Int(amount)) ₽")
+                            Text("$\(Int(amount))")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.primary)
@@ -209,7 +209,7 @@ struct TripSummaryView: View {
     // MARK: - Statistics Section
     private var statisticsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Статистика")
+            Text("Statistics")
                 .font(.headline)
                 .foregroundColor(.primary)
             
@@ -218,29 +218,29 @@ struct TripSummaryView: View {
             
             VStack(spacing: 12) {
                 StatisticRow(
-                    title: "Количество расходов",
+                    title: "Number of Expenses",
                     value: "\(trip.expenses.count)",
                     icon: "list.number",
                     color: .blue
                 )
                 
                 StatisticRow(
-                    title: "Средний расход",
-                    value: trip.expenses.isEmpty ? "0 ₽" : "\(Int(trip.totalAmount / Double(trip.expenses.count))) ₽",
+                    title: "Average Expense",
+                    value: trip.expenses.isEmpty ? "$0" : "$\(Int(trip.totalAmount / Double(trip.expenses.count)))",
                     icon: "chart.bar",
                     color: .green
                 )
                 
                 StatisticRow(
-                    title: "В день в среднем",
-                    value: "\(Int(averagePerDay)) ₽",
+                    title: "Average per Day",
+                    value: "$\(Int(averagePerDay))",
                     icon: "calendar.day.timeline.leading",
                     color: .orange
                 )
                 
                 if trip.budget > 0 {
                     StatisticRow(
-                        title: "Использовано бюджета",
+                        title: "Budget Used",
                         value: "\(Int(trip.budgetUsagePercentage))%",
                         icon: "percent",
                         color: trip.budgetUsagePercentage > 100 ? .red : .purple

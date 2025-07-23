@@ -10,6 +10,7 @@ import SwiftUI
 struct AddExpenseToTripView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var tripViewModel: TripViewModel
+
     let tripId: UUID
     
     @State private var description = ""
@@ -20,23 +21,23 @@ struct AddExpenseToTripView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Информация о расходе")) {
-                    TextField("Описание", text: $description)
+                Section(header: Text("Expense Information")) {
+                    TextField("Description", text: $description)
                     
                     HStack {
-                        Text("Сумма")
+                        Text("Amount")
                         Spacer()
                         TextField("0", text: $amount)
                             .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
-                        Text("₽")
+                        Text("$")
                     }
                     
-                    DatePicker("Дата", selection: $date, displayedComponents: .date)
+                    DatePicker("Date", selection: $date, displayedComponents: .date)
                 }
                 
-                Section(header: Text("Категория")) {
-                    Picker("Категория", selection: $category) {
+                Section(header: Text("Category")) {
+                    Picker("Category", selection: $category) {
                         ForEach(ExpenseCategory.allCases, id: \.self) { category in
                             HStack {
                                 Image(systemName: category.icon)
@@ -49,17 +50,17 @@ struct AddExpenseToTripView: View {
                     .pickerStyle(.wheel)
                 }
             }
-            .navigationTitle("Новый расход")
+            .navigationTitle("New Expense")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Отмена") {
+                    Button("Cancel") {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Сохранить") {
+                    Button("Save") {
                         saveExpense()
                     }
                     .disabled(description.isEmpty || amount.isEmpty)

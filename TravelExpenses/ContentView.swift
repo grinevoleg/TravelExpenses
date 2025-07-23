@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var tripViewModel = TripViewModel()
     @StateObject private var expenseViewModel = ExpenseViewModel()
+
     @State private var selectedTab = 1
     @State private var selectedSummaryTripId: UUID? = nil
     
@@ -18,7 +19,7 @@ struct ContentView: View {
             TripListView(tripViewModel: tripViewModel)
                 .tabItem {
                     Image(systemName: "airplane")
-                    Text("Поездки")
+                    Text("Trips")
                 }
                 .tag(0)
             
@@ -27,7 +28,7 @@ struct ContentView: View {
                 .environmentObject(expenseViewModel)
                 .tabItem {
                     Image(systemName: "list.bullet.rectangle")
-                    Text("Расходы")
+                    Text("Expenses")
                 }
                 .tag(1)
             
@@ -36,7 +37,7 @@ struct ContentView: View {
                 .environmentObject(expenseViewModel)
                 .tabItem {
                     Image(systemName: "chart.pie")
-                    Text("Сводка")
+                    Text("Summary")
                 }
                 .tag(2)
         }
@@ -55,23 +56,29 @@ struct ExpenseView: View {
     
     var body: some View {
         ZStack {
-            // Основной фон
-            Color.white
+            // Main background
+            Color(.systemBackground)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Красивый градиентный заголовок
-                GradientHeaderView(
-                    title: "Расходы",
-                    colors: [.green, .blue]
-                )
+                // Beautiful gradient header with theme toggle
+                HStack {
+                    GradientHeaderView(
+                        title: "Expenses",
+                        colors: [.green, .blue]
+                    )
+                    
+                    Spacer()
+                    
+
+                }
                 
-                // Основной контент
+                // Main content
                 ScrollView {
                     VStack(spacing: 20) {
-                        // Выбор поездки для расходов
+                        // Trip selection for expenses
                         VStack(spacing: 8) {
-                            Text("Выберите поездку для расходов")
+                            Text("Select a trip for expenses")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
@@ -80,10 +87,10 @@ struct ExpenseView: View {
                                     Image(systemName: "airplane.departure")
                                         .font(.system(size: 50))
                                         .foregroundColor(.gray)
-                                    Text("Нет поездок")
+                                    Text("No trips")
                                         .font(.title2)
                                         .foregroundColor(.gray)
-                                    Text("Создайте первую поездку на вкладке 'Поездки'")
+                                    Text("Create your first trip on the 'Trips' tab")
                                         .font(.body)
                                         .foregroundColor(.secondary)
                                         .multilineTextAlignment(.center)
@@ -115,10 +122,10 @@ struct ExpenseView: View {
                         }
                         .padding(.top, 0)
                         
-                        // Секция деталей поездки и расходов
+                        // Trip details and expenses section
                         if let selectedTrip = tripViewModel.selectedTrip {
                             VStack(spacing: 20) {
-                                // Детали поездки
+                                // Trip details
                                 VStack(alignment: .leading, spacing: 15) {
                                     HStack {
                                         Text(selectedTrip.name)
@@ -155,14 +162,14 @@ struct ExpenseView: View {
                                 .cornerRadius(15)
                                 .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
                                 
-                                // Список расходов
+                                // Expenses list
                                 VStack(alignment: .leading, spacing: 15) {
                                     HStack {
-                                        Text("Расходы")
+                                        Text("Expenses")
                                             .font(.headline)
                                         Spacer()
                                         if !tripExpenses.isEmpty {
-                                            Text("Всего: \(totalAmount, specifier: "%.2f") ₽")
+                                            Text("Total: $\(totalAmount, specifier: "%.2f")")
                                                 .font(.subheadline)
                                                 .fontWeight(.medium)
                                                 .foregroundColor(.blue)
@@ -174,10 +181,10 @@ struct ExpenseView: View {
                                             Image(systemName: "creditcard")
                                                 .font(.system(size: 40))
                                                 .foregroundColor(.gray)
-                                            Text("Нет расходов")
+                                            Text("No expenses")
                                                 .font(.title3)
                                                 .foregroundColor(.gray)
-                                            Text("Добавьте первый расход для этой поездки")
+                                            Text("Add your first expense for this trip")
                                                 .font(.body)
                                                 .foregroundColor(.secondary)
                                                 .multilineTextAlignment(.center)
@@ -201,7 +208,7 @@ struct ExpenseView: View {
                             .padding(.horizontal, 15)
                         }
                         
-                        // Отступ снизу
+                        // Bottom spacing
                         Spacer(minLength: 100)
                     }
                 }
@@ -275,7 +282,7 @@ struct TripSelectorCard: View {
     var body: some View {
         Button(action: onTap) {
             VStack(alignment: .center, spacing: 8) {
-                // Иконка поездки
+                // Trip icon
                 ZStack {
                     Circle()
                         .fill(
@@ -283,23 +290,23 @@ struct TripSelectorCard: View {
                             ? LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)
                             : LinearGradient(colors: tripType.gradientColors, startPoint: .topLeading, endPoint: .bottomTrailing)
                         )
-                        .frame(width: 40, height: 40) // Уменьшаем размер иконки
+                        .frame(width: 40, height: 40) // Reduce icon size
                     
                     Image(systemName: tripType.iconName)
-                        .font(.title3) // Уменьшаем размер иконки
+                        .font(.title3) // Reduce icon size
                         .foregroundColor(.white)
                 }
                 
-                // Название поездки - одна строка с обрезанием
+                // Trip name - single line with truncation
                 Text(trip.name)
                     .font(.caption)
                     .foregroundColor(isSelected ? .primary : .secondary)
-                    .lineLimit(1) // Только одна строка
-                    .truncationMode(.tail) // Обрезание в конце
+                    .lineLimit(1) // Only one line
+                    .truncationMode(.tail) // Truncate at the end
                     .multilineTextAlignment(.center)
-                    .frame(width: 100, height: 20, alignment: .center) // Уменьшаем высоту и центрируем
+                    .frame(width: 100, height: 20, alignment: .center) // Reduce height and center
                 
-                // Количество расходов - всегда в одном месте
+                // Expense count - always in the same place
                 Group {
                     if !trip.expenses.isEmpty {
                         Text("\(trip.expenses.count)")
@@ -312,7 +319,7 @@ struct TripSelectorCard: View {
                                     .fill(isSelected ? Color.blue : Color.gray)
                             )
                     } else {
-                        // Пустое место чтобы все карточки были одинаковой высоты
+                        // Empty space to keep all cards the same height
                         Text(" ")
                             .font(.caption2)
                             .padding(.horizontal, 8)
@@ -321,7 +328,7 @@ struct TripSelectorCard: View {
                     }
                 }
             }
-            .frame(width: 120, height: 100) // Увеличиваем высоту карточки
+            .frame(width: 120, height: 100) // Increase card height
             .scaleEffect(isSelected ? 1.05 : 1.0)
             .animation(.spring(response: 0.3), value: isSelected)
         }
@@ -340,30 +347,30 @@ struct TripSummaryWrapperView: View {
     
     var body: some View {
         ZStack {
-            // Основной фон теперь серый
+            // Main background is now gray
             Color(.systemGray6)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Красивый градиентный заголовок
+                // Beautiful gradient header
                 GradientHeaderView(
-                    title: "Сводка",
+                    title: "Summary",
                     colors: [.purple, .blue]
                 )
                 Divider().opacity(0.06)
                 
-                // Основной контент
+                // Main content
                 if tripViewModel.trips.isEmpty {
                     VStack(spacing: 24) {
                         Image(systemName: "chart.pie")
                             .font(.system(size: 60))
                             .foregroundColor(.gray.opacity(0.6))
                         
-                        Text("Нет поездок")
+                        Text("No trips")
                             .font(.title2)
                             .foregroundColor(.secondary)
                         
-                        Text("Создайте поездку на вкладке \"Поездки\"")
+                        Text("Create a trip on the \"Trips\" tab")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                             .multilineTextAlignment(.center)
@@ -373,9 +380,9 @@ struct TripSummaryWrapperView: View {
                 } else {
                     ScrollView {
                         VStack(spacing: 20) {
-                            // Выбор поездки для сводки
+                            // Trip selection for summary
                             VStack(spacing: 8) {
-                                Text("Выберите поездку для сводки")
+                                Text("Select a trip for summary")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
@@ -402,7 +409,7 @@ struct TripSummaryWrapperView: View {
                             }
                             .padding(.top, 0)
                             
-                            // Сводка выбранной поездки
+                            // Selected trip summary
                             if let selectedTrip = selectedSummaryTrip {
                                 TripSummaryView(trip: selectedTrip)
                                     .padding(.horizontal, 15)
@@ -413,13 +420,13 @@ struct TripSummaryWrapperView: View {
             }
         }
         .onAppear {
-            // Устанавливаем первую поездку при первом появлении
+            // Set first trip on first appearance
             if selectedSummaryTripId == nil && !tripViewModel.trips.isEmpty {
                 selectedSummaryTripId = tripViewModel.trips.first?.id
             }
         }
         .onChange(of: tripViewModel.trips) { _ in
-            // Обновляем выбранную поездку при изменении списка поездок
+            // Update selected trip when trip list changes
             if selectedSummaryTripId == nil || !tripViewModel.trips.contains(where: { $0.id == selectedSummaryTripId }) {
                 selectedSummaryTripId = tripViewModel.trips.first?.id
             }

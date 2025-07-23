@@ -9,25 +9,26 @@ import SwiftUI
 
 struct ExpenseListView: View {
     @EnvironmentObject var expenseViewModel: ExpenseViewModel
+
     @State private var showingAddExpense = false
     
     var body: some View {
         ZStack {
-            // Основной фон
-            Color(UIColor.systemGroupedBackground)
+            // Main background
+            Color(.systemBackground)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Красивый градиентный заголовок
+                // Beautiful gradient header
                 GradientHeaderView(
-                    title: "Мои расходы",
+                    title: "My Expenses",
                     colors: [.green, .orange]
                 )
                 
-                // Основной контент
+                // Main content
                 if expenseViewModel.expenses.isEmpty {
                     VStack(spacing: 24) {
-                        // Красивая иконка с анимацией
+                        // Beautiful animated icon
                         ZStack {
                             Circle()
                                 .fill(
@@ -46,7 +47,7 @@ struct ExpenseListView: View {
                         }
                         
                         VStack(spacing: 12) {
-                            Text("Расходов пока нет")
+                            Text("No expenses yet")
                                 .font(.title)
                                 .foregroundStyle(
                                     LinearGradient(
@@ -56,21 +57,21 @@ struct ExpenseListView: View {
                                     )
                                 )
                             
-                            Text("Добавьте первый расход\nи начните отслеживать траты")
+                            Text("Add your first expense\nand start tracking spending")
                                 .font(.body)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
                                 .lineSpacing(4)
                         }
                         
-                        // Красивая кнопка
+                        // Beautiful button
                         Button {
                             showingAddExpense = true
                         } label: {
                             HStack(spacing: 12) {
                                 Image(systemName: "plus.circle.fill")
                                     .font(.title2)
-                                Text("Добавить расход")
+                                Text("Add Expense")
                                     .font(.headline)
                             }
                             .foregroundColor(.white)
@@ -92,13 +93,13 @@ struct ExpenseListView: View {
                 } else {
                     ScrollView {
                         VStack(spacing: 20) {
-                            // Общая сумма
+                            // Total amount
                             VStack(spacing: 12) {
-                                Text("Общие расходы")
+                                Text("Total Expenses")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                                 
-                                Text("\(Int(expenseViewModel.totalAmount)) ₽")
+                                Text("$\(Int(expenseViewModel.totalAmount))")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                     .foregroundStyle(
@@ -109,7 +110,7 @@ struct ExpenseListView: View {
                                         )
                                     )
                                 
-                                Text("\(expenseViewModel.expenses.count) расход\(expenseViewModel.expenses.count == 1 ? "" : expenseViewModel.expenses.count < 5 ? "а" : "ов")")
+                                Text("\(expenseViewModel.expenses.count) expense\(expenseViewModel.expenses.count == 1 ? "" : "s")")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -122,10 +123,10 @@ struct ExpenseListView: View {
                             .padding(.horizontal, 16)
                             .padding(.top, -30)
                             
-                            // Список расходов
+                            // Expenses list
                             VStack(alignment: .leading, spacing: 16) {
                                 HStack {
-                                    Text("Все расходы")
+                                    Text("All Expenses")
                                         .font(.headline)
                                         .foregroundColor(.primary)
                                     Spacer()
@@ -139,7 +140,7 @@ struct ExpenseListView: View {
                                     }
                                 }
                             }
-                            .padding(.bottom, 100) // Отступ для плавающей кнопки
+                            .padding(.bottom, 100) // Spacing for floating button
                         }
                     }
                 }
@@ -147,7 +148,7 @@ struct ExpenseListView: View {
         }
         .navigationBarHidden(true)
         .overlay(alignment: .bottomTrailing) {
-            // Красивая плавающая кнопка
+            // Beautiful floating button
             Button {
                 showingAddExpense = true
             } label: {
@@ -187,7 +188,7 @@ struct ExpenseRowView: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            // Иконка категории
+            // Category icon
             ZStack {
                 Circle()
                     .fill(expense.category.color.opacity(0.2))
@@ -198,7 +199,7 @@ struct ExpenseRowView: View {
                     .foregroundColor(expense.category.color)
             }
             
-            // Информация о расходе
+            // Expense information
             VStack(alignment: .leading, spacing: 4) {
                 Text(expense.description)
                     .font(.subheadline)
@@ -220,8 +221,8 @@ struct ExpenseRowView: View {
             
             Spacer()
             
-            // Сумма
-            Text("\(Int(expense.amount)) ₽")
+            // Amount
+            Text("$\(Int(expense.amount))")
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.primary)
