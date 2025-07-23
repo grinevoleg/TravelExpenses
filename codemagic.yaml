@@ -17,69 +17,32 @@ workflows:
         KEYCHAIN_PASSWORD: $KEYCHAIN_PASSWORD
         PROVISIONING_PROFILE_BASE64: $PROVISIONING_PROFILE_BASE64
         PROVISIONING_PROFILE_SPECIFIER: $PROVISIONING_PROFILE_SPECIFIER
-        TEAM_ID: $TEAM_ID
+        TEAM_ID: "74335G6GZ5"
         CODE_SIGN_IDENTITY: $CODE_SIGN_IDENTITY
       flutter: stable
       node: latest
     scripts:
       - name: Set up code signing settings on Xcode project
         script: |
-          # set up provisioning profiles
-          PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-          mkdir -p "$PROFILES_HOME"
-          PROFILE_PATH="$(ls $PROFILES_HOME | head -n 1)"
-          PROFILE_NAME="${PROFILE_PATH%.*}"
-          uuid=$(grep -a -A 1 "UUID" "$PROFILES_HOME/$PROFILE_PATH" | grep -o "[-A-Za-z0-9]\{36\}")
-          cp "$PROFILES_HOME/$PROFILE_PATH" "$PROFILES_HOME/$uuid.mobileprovision"
-          
-          # set up signing certificate
-          echo $BUILD_CERTIFICATE_BASE64 | base64 --decode > /tmp/build_certificate.p12
-          echo $CERTIFICATE_PRIVATE_KEY | base64 --decode > /tmp/certificate_private_key.p12
-          
-          # create keychain
-          security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
-          security default-keychain -s build.keychain
-          security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
-          security set-keychain-settings -t 3600 -l ~/Library/Keychains/build.keychain
-          
-          # import certificate to keychain
-          security import /tmp/build_certificate.p12 -k build.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
-          security import /tmp/certificate_private_key.p12 -k build.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
-          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" build.keychain
-          
-          # update project settings
-          /usr/libexec/PlistBuddy -c "Set :objects:$TEAM_ID:buildSettings:CODE_SIGN_STYLE Manual" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:$TEAM_ID:buildSettings:DEVELOPMENT_TEAM $TEAM_ID" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:$TEAM_ID:buildSettings:CODE_SIGN_IDENTITY $CODE_SIGN_IDENTITY" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:$TEAM_ID:buildSettings:PROVISIONING_PROFILE_SPECIFIER $PROVISIONING_PROFILE_SPECIFIER" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:$TEAM_ID:buildSettings:PRODUCT_BUNDLE_IDENTIFIER $BUNDLE_ID" "$XCODE_PROJECT/project.pbxproj"
+          # update project settings with hardcoded values
+          /usr/libexec/PlistBuddy -c "Set :objects:74335G6GZ5:buildSettings:CODE_SIGN_STYLE Manual" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Set :objects:74335G6GZ5:buildSettings:DEVELOPMENT_TEAM 74335G6GZ5" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Set :objects:74335G6GZ5:buildSettings:CODE_SIGN_IDENTITY iPhone Distribution" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Set :objects:74335G6GZ5:buildSettings:PROVISIONING_PROFILE_SPECIFIER TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Set :objects:74335G6GZ5:buildSettings:PRODUCT_BUNDLE_IDENTIFIER com.Travon.TravelExpenses" "$XCODE_PROJECT/project.pbxproj"
       - name: Get iOS code signing files
         script: |
-          # download code signing files from Codemagic
-          echo "Downloading code signing files..."
-          keychain_password="$KEYCHAIN_PASSWORD"
-          
-          # Create variables
+          # Create API key file for App Store Connect
           app-store-connect create-api-key --file /tmp/api_key.json --issuer-id $APP_STORE_CONNECT_ISSUER_ID --key-id $APP_STORE_CONNECT_API_KEY_ID --private-key "$APP_STORE_CONNECT_API_KEY"
           
-          # Set up keychain
-          security create-keychain -p "$keychain_password" build.keychain
+          # Set up keychain for code signing
+          security create-keychain -p "codemagic" build.keychain
           security default-keychain -s build.keychain
-          security unlock-keychain -p "$keychain_password" build.keychain
+          security unlock-keychain -p "codemagic" build.keychain
           security set-keychain-settings -t 3600 -l ~/Library/Keychains/build.keychain
           
-          # Import certificates
-          echo $BUILD_CERTIFICATE_BASE64 | base64 --decode > /tmp/build_certificate.p12
-          security import /tmp/build_certificate.p12 -k build.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
-          
-          # Set up provisioning profiles
-          PROFILES_HOME="$HOME/Library/MobileDevice/Provisioning Profiles"
-          mkdir -p "$PROFILES_HOME"
-          echo $PROVISIONING_PROFILE_BASE64 | base64 --decode > /tmp/build_pp.mobileprovision
-          cp /tmp/build_pp.mobileprovision "$PROFILES_HOME"
-          
           # Set partition list
-          security set-key-partition-list -S apple-tool:,apple: -s -k "$keychain_password" build.keychain
+          security set-key-partition-list -S apple-tool:,apple: -s -k "codemagic" build.keychain
       - name: Build iOS app
         script: |
           # Build the app
