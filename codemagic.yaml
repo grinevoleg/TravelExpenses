@@ -74,6 +74,16 @@ workflows:
             --username "$APP_STORE_CONNECT_USERNAME" \
             --password "$APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD" || echo "Account might already exist"
           
+          # Create App Store Connect credentials file
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo "$APP_STORE_CONNECT_API_KEY" > ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          
+          # Set environment variables for App Store Connect
+          export APP_STORE_CONNECT_ISSUER_ID="$APP_STORE_CONNECT_ISSUER_ID"
+          export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
+          export APP_STORE_CONNECT_API_KEY_PATH="~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8"
+          
           # Create or fetch provisioning profile
           app-store-connect profiles create-profile \
             --name "TravelExpenses_AppStore" \
@@ -93,6 +103,11 @@ workflows:
           cp /tmp/TravelExpenses_AppStore.mobileprovision "$HOME/Library/MobileDevice/Provisioning Profiles/" 2>/dev/null || echo "Profile installation skipped"
       - name: Build iOS app
         script: |
+          # Set App Store Connect environment variables
+          export APP_STORE_CONNECT_ISSUER_ID="$APP_STORE_CONNECT_ISSUER_ID"
+          export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
+          export APP_STORE_CONNECT_API_KEY="$APP_STORE_CONNECT_API_KEY"
+          
           # Build the app with automatic provisioning updates and App Store Connect credentials
           xcodebuild -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
