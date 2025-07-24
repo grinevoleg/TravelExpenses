@@ -95,8 +95,11 @@ workflows:
           export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
           export APP_STORE_CONNECT_API_KEY="$APP_STORE_CONNECT_API_KEY"
           
+          # Create fastlane directory structure
+          mkdir -p fastlane
+          
           # Create Fastfile for building
-          cat > Fastfile << EOF
+          cat > fastlane/Fastfile << EOF
           default_platform(:ios)
           
           platform :ios do
@@ -131,8 +134,8 @@ workflows:
           end
           EOF
           
-          # Build using fastlane
-          fastlane build
+          # Build using fastlane in non-interactive mode
+          fastlane build --non-interactive
       - name: Create iOS build artifacts
         script: |
           # Fastlane already created the .ipa file
