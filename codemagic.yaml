@@ -48,27 +48,6 @@ workflows:
           chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
           
           echo "✅ Keychain and API key setup completed"
-      - name: Build iOS app
-        script: |
-          # Build the iOS app using xcodebuild
-          echo "Building iOS app..."
-          
-          # Clean and archive
-          xcodebuild -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -configuration Release \
-            -destination 'generic/platform=iOS' \
-            -archivePath "/tmp/build/TravelExpenses.xcarchive" \
-            -allowProvisioningUpdates \
-            clean archive
-          
-          # Export IPA
-          xcodebuild -exportArchive \
-            -archivePath "/tmp/build/TravelExpenses.xcarchive" \
-            -exportPath "/tmp/build/ios" \
-            -exportOptionsPlist /tmp/exportOptions.plist
-          
-          echo "✅ iOS app built successfully"
       - name: Create export options plist
         script: |
           # Create export options plist
@@ -94,6 +73,44 @@ workflows:
           EOF
           
           echo "✅ Export options plist created"
+      - name: Build iOS app
+        script: |
+          # Build the iOS app using xcodebuild
+          echo "Building iOS app..."
+          
+          # Create build directory
+          mkdir -p /tmp/build
+          
+          # Clean and archive
+          xcodebuild -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "/tmp/build/TravelExpenses.xcarchive" \
+            -allowProvisioningUpdates \
+            clean archive
+          
+          # Check if archive was created
+          if [ ! -f "/tmp/build/TravelExpenses.xcarchive" ]; then
+            echo "❌ Archive not created"
+            exit 1
+          fi
+          
+          echo "✅ Archive created successfully"
+          
+          # Export IPA
+          xcodebuild -exportArchive \
+            -archivePath "/tmp/build/TravelExpenses.xcarchive" \
+            -exportPath "/tmp/build/ios" \
+            -exportOptionsPlist /tmp/exportOptions.plist
+          
+          # Check if IPA was created
+          if [ ! -f "/tmp/build/ios/TravelExpenses.ipa" ]; then
+            echo "❌ IPA not created"
+            exit 1
+          fi
+          
+          echo "✅ iOS app built successfully"
       - name: Create iOS build artifacts
         script: |
           # Check for created artifacts
