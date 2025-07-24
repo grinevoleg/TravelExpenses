@@ -48,6 +48,26 @@ workflows:
           chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
           
           echo "✅ Keychain and API key setup completed"
+      - name: Set up Apple Developer account
+        script: |
+          # Set up Apple Developer account in Xcode
+          echo "Setting up Apple Developer account..."
+          
+          # Create App Store Connect API key file for xcodebuild
+          cat > /tmp/api_key.json << EOF
+          {
+            "key_id": "$APP_STORE_CONNECT_API_KEY_ID",
+            "issuer_id": "$APP_STORE_CONNECT_ISSUER_ID",
+            "key": "$APP_STORE_CONNECT_API_KEY"
+          }
+          EOF
+          
+          # Set environment variables for Xcode
+          export APP_STORE_CONNECT_ISSUER_ID="$APP_STORE_CONNECT_ISSUER_ID"
+          export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
+          export APP_STORE_CONNECT_API_KEY="$APP_STORE_CONNECT_API_KEY"
+          
+          echo "✅ Apple Developer account setup completed"
       - name: Create export options plist
         script: |
           # Create export options plist
@@ -88,6 +108,7 @@ workflows:
             -destination 'generic/platform=iOS' \
             -archivePath "/tmp/build/TravelExpenses.xcarchive" \
             -allowProvisioningUpdates \
+            -authenticationKeyPath "/tmp/api_key.json" \
             clean archive
           
           # Check if archive was created
