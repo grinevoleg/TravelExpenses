@@ -45,19 +45,79 @@ workflows:
           # Set up Apple Developer account in Xcode
           echo "Setting up Apple Developer account..."
           
+          # Check required environment variables
+          if [ -z "$APP_STORE_CONNECT_API_KEY_ID" ] || [ -z "$APP_STORE_CONNECT_ISSUER_ID" ] || [ -z "$APP_STORE_CONNECT_API_KEY" ]; then
+            echo "❌ Missing required App Store Connect environment variables"
+            exit 1
+          fi
+          
           # Create PEM format key file for xcodebuild
-          cat > /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8 << EOF
-          -----BEGIN PRIVATE KEY-----
-          $APP_STORE_CONNECT_API_KEY
-          -----END PRIVATE KEY-----
-          EOF
+          # Try different approaches for API key format
+          echo "Creating authentication key file..."
+          
+          # Method 1: Direct copy if it's already PEM format
+          echo "$APP_STORE_CONNECT_API_KEY" > /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
           chmod 600 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          
+          # Check if it already has PEM headers
+          if grep -q "-----BEGIN PRIVATE KEY-----" /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8; then
+            echo "API key appears to be already in PEM format"
+          else
+            echo "Adding PEM headers to API key"
+            # Method 2: Add PEM headers if missing
+            echo "-----BEGIN PRIVATE KEY-----" > /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+            echo "$APP_STORE_CONNECT_API_KEY" | tr -d '\n\r' >> /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+            echo "" >> /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+            echo "-----END PRIVATE KEY-----" >> /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+            chmod 600 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          fi
           
           # Verify variables are set
           echo "Issuer ID: $APP_STORE_CONNECT_ISSUER_ID"
           echo "Key ID: $APP_STORE_CONNECT_API_KEY_ID"
           echo "API Key length: ${#APP_STORE_CONNECT_API_KEY} characters"
           echo "PEM file created: /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8"
+          
+          # Debug: show first few lines of PEM file (without revealing the key)
+          echo "PEM file preview (first 3 lines):"
+          head -3 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          echo "PEM file preview (last 3 lines):"
+          tail -3 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          
+          # Show file sizes and permissions
+          echo "File details:"
+          ls -la /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          ls -la /tmp/api_key.json
+          
+          # Show content of JSON file (without revealing the key)
+          echo "JSON file content (key masked):"
+          cat /tmp/api_key.json | sed 's/"key": "[^"]*"/"key": "***MASKED***"/'
+          
+          # Basic PEM file validation
+          echo "Validating PEM file format..."
+          if grep -q "-----BEGIN PRIVATE KEY-----" /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8 && grep -q "-----END PRIVATE KEY-----" /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8; then
+            echo "✅ PEM file has correct headers"
+          else
+            echo "⚠️  PEM file missing headers, trying to fix..."
+            # Try to fix by adding headers
+            echo "-----BEGIN PRIVATE KEY-----" > /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+            echo "$APP_STORE_CONNECT_API_KEY" | tr -d '\n\r' >> /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+            echo "" >> /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+            echo "-----END PRIVATE KEY-----" >> /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+            chmod 600 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          fi
+          
+          # Create JSON fallback as well
+          echo "Creating JSON fallback file..."
+          cat > /tmp/api_key.json << EOF
+          {
+            "key_id": "$APP_STORE_CONNECT_API_KEY_ID",
+            "issuer_id": "$APP_STORE_CONNECT_ISSUER_ID",
+            "key": "$APP_STORE_CONNECT_API_KEY"
+          }
+          EOF
+          chmod 600 /tmp/api_key.json
+          echo "JSON key file created: /tmp/api_key.json"
           
           echo "✅ Apple Developer account setup completed"
       - name: Create export options plist
@@ -90,20 +150,65 @@ workflows:
           # Build the iOS app using xcodebuild
           echo "Building iOS app..."
           
+          # Verify PEM file exists and is readable
+          if [ ! -f "/tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8" ]; then
+            echo "❌ PEM file not found: /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8"
+            exit 1
+          fi
+          
+          echo "PEM file exists and is readable"
+          ls -la /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          
+          # Verify authentication variables
+          echo "Authentication variables:"
+          echo "Key ID: $APP_STORE_CONNECT_API_KEY_ID"
+          echo "Issuer ID: $APP_STORE_CONNECT_ISSUER_ID"
+          echo "API Key length: ${#APP_STORE_CONNECT_API_KEY} characters"
+          
           # Create build directory
           mkdir -p /tmp/build
           
           # Clean and archive
+          # Try different authentication methods
+          echo "Attempting build with authentication..."
+          
+          # Method 1: Try without authentication first (let Xcode handle it)
+          echo "Method 1: Building without explicit authentication..."
           xcodebuild -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
             -configuration Release \
             -destination 'generic/platform=iOS' \
             -archivePath "/tmp/build/TravelExpenses.xcarchive" \
             -allowProvisioningUpdates \
-            -authenticationKeyPath "/tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8" \
-            -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
-            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
-            clean archive
+            clean archive || {
+            echo "Method 1 failed, trying Method 2 with PEM file..."
+            
+            # Method 2: Try with PEM file
+            xcodebuild -project "$XCODE_PROJECT" \
+              -scheme "$XCODE_SCHEME" \
+              -configuration Release \
+              -destination 'generic/platform=iOS' \
+              -archivePath "/tmp/build/TravelExpenses.xcarchive" \
+              -allowProvisioningUpdates \
+              -authenticationKeyPath "/tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8" \
+              -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
+              -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
+              clean archive || {
+              echo "Method 2 failed, trying Method 3 with JSON file..."
+              
+              # Method 3: Try with JSON file
+              xcodebuild -project "$XCODE_PROJECT" \
+                -scheme "$XCODE_SCHEME" \
+                -configuration Release \
+                -destination 'generic/platform=iOS' \
+                -archivePath "/tmp/build/TravelExpenses.xcarchive" \
+                -allowProvisioningUpdates \
+                -authenticationKeyPath "/tmp/api_key.json" \
+                -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
+                -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
+                clean archive
+            }
+          }
           
           # Check if archive was created
           if [ ! -f "/tmp/build/TravelExpenses.xcarchive" ]; then
