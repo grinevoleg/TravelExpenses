@@ -8,35 +8,31 @@ workflows:
         XCODE_PROJECT: "TravelExpenses.xcodeproj"
         XCODE_SCHEME: "TravelExpenses"
         BUNDLE_ID: "com.Travon.TravelExpenses"
+        TEAM_ID: "74335G6GZ5"
+        # App Store Connect API credentials
         APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
         APP_STORE_CONNECT_API_KEY_ID: $APP_STORE_CONNECT_API_KEY_ID
         APP_STORE_CONNECT_API_KEY: $APP_STORE_CONNECT_API_KEY
-        CERTIFICATE_PRIVATE_KEY: $CERTIFICATE_PRIVATE_KEY
-        CERTIFICATE_PASSWORD: $CERTIFICATE_PASSWORD
-        BUILD_CERTIFICATE_BASE64: $BUILD_CERTIFICATE_BASE64
-        KEYCHAIN_PASSWORD: $KEYCHAIN_PASSWORD
-        PROVISIONING_PROFILE_BASE64: $PROVISIONING_PROFILE_BASE64
-        PROVISIONING_PROFILE_SPECIFIER: $PROVISIONING_PROFILE_SPECIFIER
-        TEAM_ID: "74335G6GZ5"
-        CODE_SIGN_IDENTITY: $CODE_SIGN_IDENTITY
+        # App Store Connect credentials for upload
+        APP_STORE_CONNECT_USERNAME: $APP_STORE_CONNECT_USERNAME
+        APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD: $APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD
       flutter: stable
       node: latest
     scripts:
       - name: Set up code signing settings on Xcode project
         script: |
-          # update project settings with correct object IDs
+          # Update project settings with correct object IDs
           # Debug configuration
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Automatic" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM 74335G6GZ5" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM $TEAM_ID" "$XCODE_PROJECT/project.pbxproj"
           
           # Release configuration
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Automatic" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM 74335G6GZ5" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM $TEAM_ID" "$XCODE_PROJECT/project.pbxproj"
+          
+          echo "✅ Code signing settings updated"
       - name: Get iOS code signing files
         script: |
-          # Install fastlane
-          gem install fastlane
-          
           # Set up keychain for code signing
           security create-keychain -p "codemagic" build.keychain
           security default-keychain -s build.keychain
@@ -46,9 +42,36 @@ workflows:
           # Set partition list
           security set-key-partition-list -S apple-tool:,apple: -s -k "codemagic" build.keychain
           
-
+          # Create App Store Connect credentials file
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo "$APP_STORE_CONNECT_API_KEY" > ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
           
-          # Create export options plist early
+          echo "✅ Keychain and API key setup completed"
+      - name: Build iOS app
+        script: |
+          # Build the iOS app using xcodebuild
+          echo "Building iOS app..."
+          
+          # Clean and archive
+          xcodebuild -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "/tmp/build/TravelExpenses.xcarchive" \
+            -allowProvisioningUpdates \
+            clean archive
+          
+          # Export IPA
+          xcodebuild -exportArchive \
+            -archivePath "/tmp/build/TravelExpenses.xcarchive" \
+            -exportPath "/tmp/build/ios" \
+            -exportOptionsPlist /tmp/exportOptions.plist
+          
+          echo "✅ iOS app built successfully"
+      - name: Create export options plist
+        script: |
+          # Create export options plist
           cat > /tmp/exportOptions.plist << EOF
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -57,104 +80,23 @@ workflows:
               <key>method</key>
               <string>app-store</string>
               <key>teamID</key>
-              <string>74335G6GZ5</string>
+              <string>$TEAM_ID</string>
               <key>signingStyle</key>
               <string>automatic</string>
+              <key>stripSwiftSymbols</key>
+              <true/>
+              <key>uploadBitcode</key>
+              <false/>
+              <key>uploadSymbols</key>
+              <true/>
           </dict>
           </plist>
           EOF
           
-          # Create App Store Connect credentials file
-          mkdir -p ~/.appstoreconnect/private_keys
-          echo "$APP_STORE_CONNECT_API_KEY" > ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
-          chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
-          
-          # Set environment variables for App Store Connect
-          export APP_STORE_CONNECT_ISSUER_ID="$APP_STORE_CONNECT_ISSUER_ID"
-          export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
-          export APP_STORE_CONNECT_API_KEY_PATH="~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8"
-          
-          # Set match password for certificate encryption
-          export MATCH_PASSWORD="TravelExpenses2024!"
-          
-          # Use fastlane to sync certificates and profiles
-          echo "Starting certificate sync..."
-          fastlane run sync_code_signing \
-            type:appstore \
-            app_identifier:com.Travon.TravelExpenses \
-            team_id:74335G6GZ5 \
-            git_url:https://github.com/grinevoleg/TravelExpenses.git \
-            api_key_path:~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8 \
-            readonly:false
-          
-          # Check if sync was successful
-          if [ $? -eq 0 ]; then
-            echo "✅ Certificate sync completed successfully"
-          else
-            echo "❌ Certificate sync failed"
-            exit 1
-          fi
-          
-          # Add Apple Developer account to Xcode
-          echo "Setting up Apple Developer account..."
-          fastlane run app_store_connect_api_key \
-            key_id:$APP_STORE_CONNECT_API_KEY_ID \
-            issuer_id:$APP_STORE_CONNECT_ISSUER_ID \
-            key_content:$APP_STORE_CONNECT_API_KEY \
-            duration:1200 \
-            in_house:false
-          
-          # Check if account setup was successful
-          if [ $? -eq 0 ]; then
-            echo "✅ Apple Developer account setup completed"
-          else
-            echo "❌ Apple Developer account setup failed"
-            exit 1
-          fi
-      - name: Build iOS app
-        script: |
-          # Set non-interactive environment variables
-          export FASTLANE_SKIP_UPDATE_CHECK=1
-          export FASTLANE_HIDE_CHANGELOG=1
-          export FASTLANE_DISABLE_COLORS=1
-          
-          # Create fastlane directory structure
-          mkdir -p fastlane
-          
-          # Create Fastfile for building
-          cat > fastlane/Fastfile << EOF
-          default_platform(:ios)
-          
-          platform :ios do
-            desc "Build and archive iOS app"
-            lane :build do
-              setup_ci if is_ci
-              
-              build_ios_app(
-                project: "TravelExpenses.xcodeproj",
-                scheme: "TravelExpenses",
-                configuration: "Release",
-                export_method: "app-store",
-                export_options: {
-                  method: "app-store",
-                  teamID: "74335G6GZ5",
-                  signingStyle: "automatic"
-                },
-                output_directory: "/tmp/build/ios",
-                output_name: "TravelExpenses.ipa",
-                clean: true,
-                archive_path: "/tmp/build/TravelExpenses.xcarchive",
-                xcargs: "-allowProvisioningUpdates"
-              )
-            end
-          end
-          EOF
-          
-          # Build using fastlane
-          fastlane build
+          echo "✅ Export options plist created"
       - name: Create iOS build artifacts
         script: |
-          # Fastlane already created the .ipa file
+          # Check for created artifacts
           echo "Checking for created artifacts..."
           ls -la /tmp/build/ios/
           
@@ -165,22 +107,13 @@ workflows:
             echo "❌ TravelExpenses.ipa not found"
             exit 1
           fi
-      - name: Publish to App Store Connect
-        script: |
-          # Upload to App Store Connect using xcrun notarytool
-          echo "Uploading to App Store Connect..."
-          xcrun notarytool submit "/tmp/build/ios/TravelExpenses.ipa" \
-            --apple-id "$APP_STORE_CONNECT_USERNAME" \
-            --password "$APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD" \
-            --team-id "74335G6GZ5" \
-            --wait
     artifacts:
       - /tmp/build/ios/*.ipa
       - /tmp/build/TravelExpenses.xcarchive
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
-        key_id: $APP_STORE_CONNECT_KEY_ID
+        api_key: $APP_STORE_CONNECT_API_KEY
+        key_id: $APP_STORE_CONNECT_API_KEY_ID
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
         submit_to_app_store: false 
