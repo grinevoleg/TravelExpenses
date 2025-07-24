@@ -109,6 +109,7 @@ workflows:
             -archivePath "/tmp/build/TravelExpenses.xcarchive" \
             -allowProvisioningUpdates \
             -authenticationKeyPath "/tmp/api_key.json" \
+            -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
             clean archive
           
           # Check if archive was created
