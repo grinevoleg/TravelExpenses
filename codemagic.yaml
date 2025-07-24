@@ -1,6 +1,7 @@
 workflows:
   ios-workflow:
-    name: iOS Workflow
+    integrations:
+      app_store_connect: TravelExpensesTravon
     environment:
       groups:
         - vars
@@ -11,36 +12,11 @@ workflows:
         XCODE_SCHEME: "TravelExpenses"
         BUNDLE_ID: "com.Travon.TravelExpenses"
         TEAM_ID: "74335G6GZ5"
-        # App Store Connect API credentials
         APP_STORE_CONNECT_API_KEY_ID: $APP_STORE_CONNECT_API_KEY_ID
         APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
-        APP_STORE_CONNECT_API_KEY_BASE64: $APP_STORE_CONNECT_API_KEY_BASE64
       flutter: stable
       node: latest
     scripts:
-      - name: Prepare App Store Connect API key
-        script: |
-          # Декодируем base64 в PEM-файл
-          echo "$APP_STORE_CONNECT_API_KEY_BASE64" | base64 -d > /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
-          chmod 600 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
-
-          # Проверяем содержимое
-          echo "==== PEM-файл (первые 10 строк) ===="
-          head -10 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
-          echo "==== HEX-дамп (первые 64 байта) ===="
-          head -c 64 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8 | hexdump -C
-
-          # Проверяем, что файл похож на PEM
-          if ! grep -q "-----BEGIN PRIVATE KEY-----" /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8; then
-            echo "❌ PEM-файл не содержит заголовка!"
-            exit 1
-          fi
-          if ! grep -q "-----END PRIVATE KEY-----" /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8; then
-            echo "❌ PEM-файл не содержит окончания!"
-            exit 1
-          fi
-          echo "✅ PEM-файл успешно создан и валиден"
-
       - name: Set up code signing settings on Xcode project
         script: |
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Automatic" "$XCODE_PROJECT/project.pbxproj"
@@ -48,7 +24,6 @@ workflows:
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Automatic" "$XCODE_PROJECT/project.pbxproj"
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM $TEAM_ID" "$XCODE_PROJECT/project.pbxproj"
           echo "✅ Code signing settings updated"
-
       - name: Create export options plist
         script: |
           cat > /tmp/exportOptions.plist << EOF
@@ -72,7 +47,6 @@ workflows:
           </plist>
           EOF
           echo "✅ Export options plist created"
-
       - name: Build iOS app
         script: |
           echo "Building iOS app..."
@@ -83,9 +57,6 @@ workflows:
             -destination 'generic/platform=iOS' \
             -archivePath "/tmp/build/TravelExpenses.xcarchive" \
             -allowProvisioningUpdates \
-            -authenticationKeyPath "/tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8" \
-            -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
-            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
             clean archive
           if [ ! -d "/tmp/build/TravelExpenses.xcarchive" ]; then
             echo "❌ Archive not created"
@@ -101,7 +72,6 @@ workflows:
             exit 1
           fi
           echo "✅ iOS app built successfully"
-
       - name: Create iOS build artifacts
         script: |
           echo "Checking for created artifacts..."
@@ -117,8 +87,5 @@ workflows:
       - /tmp/build/TravelExpenses.xcarchive
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_API_KEY_BASE64
-        key_id: $APP_STORE_CONNECT_API_KEY_ID
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
         submit_to_app_store: false 
