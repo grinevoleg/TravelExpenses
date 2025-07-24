@@ -33,6 +33,12 @@ workflows:
           echo "✅ Code signing settings updated"
       - name: Get iOS code signing files
         script: |
+          # Check required environment variables
+          if [ -z "$APP_STORE_CONNECT_API_KEY_ID" ] || [ -z "$APP_STORE_CONNECT_ISSUER_ID" ] || [ -z "$APP_STORE_CONNECT_API_KEY" ]; then
+            echo "❌ Missing required App Store Connect environment variables"
+            exit 1
+          fi
+          
           # Set up keychain for code signing
           security create-keychain -p "codemagic" build.keychain
           security default-keychain -s build.keychain
@@ -42,12 +48,7 @@ workflows:
           # Set partition list
           security set-key-partition-list -S apple-tool:,apple: -s -k "codemagic" build.keychain
           
-          # Create App Store Connect credentials file
-          mkdir -p ~/.appstoreconnect/private_keys
-          echo "$APP_STORE_CONNECT_API_KEY" > ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
-          chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
-          
-          echo "✅ Keychain and API key setup completed"
+          echo "✅ Keychain setup completed"
       - name: Set up Apple Developer account
         script: |
           # Set up Apple Developer account in Xcode
