@@ -111,14 +111,6 @@ workflows:
             lane :build do
               setup_ci if is_ci
               
-              sync_code_signing(
-                type: "appstore",
-                app_identifier: "com.Travon.TravelExpenses",
-                team_id: "74335G6GZ5",
-                git_url: "https://github.com/grinevoleg/TravelExpenses.git",
-                readonly: false
-              )
-              
               build_ios_app(
                 project: "TravelExpenses.xcodeproj",
                 scheme: "TravelExpenses",
