@@ -54,6 +54,12 @@ workflows:
           # Set up Apple Developer account in Xcode
           echo "Setting up Apple Developer account..."
           
+          # Create PEM format key file for xcodebuild
+          cat > /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8 << EOF
+          $APP_STORE_CONNECT_API_KEY
+          EOF
+          chmod 600 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+          
           # Create App Store Connect API key file for xcodebuild
           cat > /tmp/api_key.json << EOF
           {
@@ -72,6 +78,7 @@ workflows:
           echo "Issuer ID: $APP_STORE_CONNECT_ISSUER_ID"
           echo "Key ID: $APP_STORE_CONNECT_API_KEY_ID"
           echo "API Key length: ${#APP_STORE_CONNECT_API_KEY} characters"
+          echo "PEM file created: /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8"
           
           echo "✅ Apple Developer account setup completed"
       - name: Create export options plist
@@ -114,7 +121,7 @@ workflows:
             -destination 'generic/platform=iOS' \
             -archivePath "/tmp/build/TravelExpenses.xcarchive" \
             -allowProvisioningUpdates \
-            -authenticationKeyPath "/tmp/api_key.json" \
+            -authenticationKeyPath "/tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8" \
             -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
             -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
             clean archive
