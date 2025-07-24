@@ -124,7 +124,8 @@ workflows:
                 output_directory: "/tmp/build/ios",
                 output_name: "TravelExpenses.ipa",
                 clean: true,
-                archive_path: "/tmp/build/TravelExpenses.xcarchive"
+                archive_path: "/tmp/build/TravelExpenses.xcarchive",
+                xcargs: "-allowProvisioningUpdates"
               )
             end
           end
