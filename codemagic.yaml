@@ -1,0 +1,34 @@
+workflows:
+  ios-workflow:
+    integrations:
+      app_store_connect: TravelExpensesCodemagic
+    environment:
+      xcode: latest
+      cocoapods: default
+      vars:
+        XCODE_PROJECT: "TravelExpenses.xcodeproj"
+        XCODE_SCHEME: "TravelExpenses"
+        BUNDLE_ID: "com.Travon.TravelExpenses"
+        TEAM_ID: "74335G6GZ5"
+    scripts:
+      - name: Build iOS app
+        script: |
+          xcodebuild -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "/tmp/build/TravelExpenses.xcarchive" \
+            -allowProvisioningUpdates \
+            clean archive
+          xcodebuild -exportArchive \
+            -archivePath "/tmp/build/TravelExpenses.xcarchive" \
+            -exportPath "/tmp/build/ios" \
+            -exportOptionsPlist /tmp/exportOptions.plist
+    artifacts:
+      - /tmp/build/ios/*.ipa
+      - /tmp/build/TravelExpenses.xcarchive
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        submit_to_app_store: false 
