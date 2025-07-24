@@ -1,7 +1,7 @@
 workflows:
   ios-workflow:
     integrations:
-      app_store_connect: TravelExpensesTravon
+      app_store_connect: TravelExpensesCodemagic
     environment:
       groups:
         - vars
