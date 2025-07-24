@@ -47,7 +47,9 @@ workflows:
           
           # Create PEM format key file for xcodebuild
           cat > /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8 << EOF
+          -----BEGIN PRIVATE KEY-----
           $APP_STORE_CONNECT_API_KEY
+          -----END PRIVATE KEY-----
           EOF
           chmod 600 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
           
