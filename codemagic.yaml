@@ -93,5 +93,6 @@ workflows:
     publishing:
       app_store_connect:
         apple_id: $APP_STORE_CONNECT_USERNAME
+        app_specific_password: $APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD
         submit_to_testflight: true
         submit_to_app_store: false 
