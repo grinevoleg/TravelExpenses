@@ -46,14 +46,7 @@ workflows:
           # Set partition list
           security set-key-partition-list -S apple-tool:,apple: -s -k "codemagic" build.keychain
           
-          # Create API key file manually
-          cat > /tmp/api_key.json << EOF
-          {
-            "keyId": "$APP_STORE_CONNECT_API_KEY_ID",
-            "issuerId": "$APP_STORE_CONNECT_ISSUER_ID",
-            "privateKey": "$APP_STORE_CONNECT_API_KEY"
-          }
-          EOF
+
           
           # Create export options plist early
           cat > /tmp/exportOptions.plist << EOF
@@ -86,7 +79,7 @@ workflows:
             type:appstore \
             app_identifier:com.Travon.TravelExpenses \
             team_id:74335G6GZ5 \
-            api_key_path:/tmp/api_key.json \
+            api_key:"{\"key_id\":\"$APP_STORE_CONNECT_API_KEY_ID\",\"issuer_id\":\"$APP_STORE_CONNECT_ISSUER_ID\",\"key_content\":\"$APP_STORE_CONNECT_API_KEY\"}" \
             readonly:false || echo "Fastlane sync completed"
       - name: Build iOS app
         script: |
@@ -116,7 +109,11 @@ workflows:
                 type: "appstore",
                 app_identifier: "com.Travon.TravelExpenses",
                 team_id: "74335G6GZ5",
-                api_key_path: "/tmp/api_key.json",
+                api_key: {
+                  key_id: "$APP_STORE_CONNECT_API_KEY_ID",
+                  issuer_id: "$APP_STORE_CONNECT_ISSUER_ID",
+                  key_content: "$APP_STORE_CONNECT_API_KEY"
+                },
                 readonly: false
               )
               
