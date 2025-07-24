@@ -8,7 +8,7 @@ workflows:
       vars:
         XCODE_PROJECT: "TravelExpenses.xcodeproj"
         XCODE_SCHEME: "TravelExpenses"
-        BUNDLE_ID: "com.Travon.TravelExpenses"
+        BUNDLE_ID: "com.travon.travelexpens"
         TEAM_ID: "74335G6GZ5"
     scripts:
       - name: Create export options plist

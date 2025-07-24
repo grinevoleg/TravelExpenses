@@ -66,3 +66,30 @@ KEYCHAIN_PASSWORD = codemagic
 4. **Generate Password** → **TravelExpenses Codemagic**
 5. **Скопируйте** сгенерированный пароль
 6. **Добавьте** в переменную `APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD` 
+
+---
+
+### **Пояснение:**
+- На macOS команда `base64` требует явного указания файла через `-i`.
+- На Linux можно просто `base64 имя_файла`, а на Mac — только через `-i`.
+
+---
+
+## **Итак, правильная команда для Mac:**
+
+```sh
+base64 -i AuthKey_BL8KD3P85J.p8 | pbcopy
+```
+- После этого просто вставьте содержимое из буфера обмена в Codemagic.
+
+---
+
+**Если нужно сохранить в файл:**
+```sh
+base64 -i AuthKey_BL8KD3P85J.p8 > key_base64.txt
+```
+
+---
+
+Теперь всё получится!  
+Если будут вопросы — пишите! 
