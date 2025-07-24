@@ -15,6 +15,10 @@ workflows:
       flutter: stable
       node: latest
     scripts:
+      - name: Prepare App Store Connect API key
+        script: |
+          echo "$APP_STORE_CONNECT_API_KEY" > /tmp/AuthKey.p8
+          chmod 600 /tmp/AuthKey.p8
       - name: Set up code signing settings on Xcode project
         script: |
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Automatic" "$XCODE_PROJECT/project.pbxproj"
@@ -55,6 +59,9 @@ workflows:
             -destination 'generic/platform=iOS' \
             -archivePath "/tmp/build/TravelExpenses.xcarchive" \
             -allowProvisioningUpdates \
+            -authenticationKeyPath "/tmp/AuthKey.p8" \
+            -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
+            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
             clean archive
           if [ ! -d "/tmp/build/TravelExpenses.xcarchive" ]; then
             echo "❌ Archive not created"
