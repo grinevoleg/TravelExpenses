@@ -25,15 +25,17 @@ workflows:
       - name: Set up code signing settings on Xcode project
         script: |
           # update project settings with correct object IDs
+          # Debug configuration
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Manual" "$XCODE_PROJECT/project.pbxproj"
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM 74335G6GZ5" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY iPhone Distribution" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Add :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY string iPhone Distribution" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY iPhone Distribution" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Add :objects:F21C12C82E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER string TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj"
           
+          # Release configuration
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Manual" "$XCODE_PROJECT/project.pbxproj"
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM 74335G6GZ5" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY iPhone Distribution" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Add :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY string iPhone Distribution" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY iPhone Distribution" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Add :objects:F21C12C92E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER string TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj"
       - name: Get iOS code signing files
         script: |
           # Create API key file for App Store Connect
