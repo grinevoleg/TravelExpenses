@@ -21,6 +21,7 @@ RELEASE_CONFIG_ID = F21C12C92E212CD800C7DB37
 APP_STORE_CONNECT_ISSUER_ID = 74335G6GZ5
 APP_STORE_CONNECT_API_KEY_ID = 8NJVRV8NU7
 APP_STORE_CONNECT_API_KEY = [содержимое .p8 файла]
+CERTIFICATE_ID = [ID вашего Distribution сертификата]
 ```
 
 ### Code Signing (если используете ручные сертификаты):

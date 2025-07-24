@@ -26,16 +26,12 @@ workflows:
         script: |
           # update project settings with correct object IDs
           # Debug configuration
-          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Manual" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Automatic" "$XCODE_PROJECT/project.pbxproj"
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM 74335G6GZ5" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Add :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY string iPhone Distribution" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY iPhone Distribution" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Add :objects:F21C12C82E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER string TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C82E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj"
           
           # Release configuration
-          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Manual" "$XCODE_PROJECT/project.pbxproj"
+          /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_STYLE Automatic" "$XCODE_PROJECT/project.pbxproj"
           /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:DEVELOPMENT_TEAM 74335G6GZ5" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Add :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY string iPhone Distribution" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:CODE_SIGN_IDENTITY iPhone Distribution" "$XCODE_PROJECT/project.pbxproj"
-          /usr/libexec/PlistBuddy -c "Add :objects:F21C12C92E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER string TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj"
       - name: Get iOS code signing files
         script: |
           # Set up keychain for code signing
@@ -55,6 +51,24 @@ workflows:
             "privateKey": "$APP_STORE_CONNECT_API_KEY"
           }
           EOF
+          
+          # Create or fetch provisioning profile
+          app-store-connect profiles create-profile \
+            --name "TravelExpenses_AppStore" \
+            --bundle-id "com.Travon.TravelExpenses" \
+            --profile-type "IOS_APP_STORE" \
+            --certificate-id "$CERTIFICATE_ID" \
+            --api-key-path /tmp/api_key.json || echo "Profile might already exist"
+          
+          # Download the profile
+          app-store-connect profiles download-profile \
+            --name "TravelExpenses_AppStore" \
+            --api-key-path /tmp/api_key.json \
+            --output-path /tmp/TravelExpenses_AppStore.mobileprovision || echo "Using existing profile"
+          
+          # Install the profile
+          mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          cp /tmp/TravelExpenses_AppStore.mobileprovision "$HOME/Library/MobileDevice/Provisioning Profiles/" 2>/dev/null || echo "Profile installation skipped"
       - name: Build iOS app
         script: |
           # Build the app
@@ -77,14 +91,7 @@ workflows:
               <key>teamID</key>
               <string>74335G6GZ5</string>
               <key>signingStyle</key>
-              <string>manual</string>
-              <key>provisioningProfiles</key>
-              <dict>
-                  <key>com.Travon.TravelExpenses</key>
-                  <string>TravelExpenses_AppStore</string>
-              </dict>
-              <key>signingCertificate</key>
-              <string>iPhone Distribution</string>
+              <string>automatic</string>
           </dict>
           </plist>
           EOF
