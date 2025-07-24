@@ -95,26 +95,57 @@ workflows:
           export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
           export APP_STORE_CONNECT_API_KEY="$APP_STORE_CONNECT_API_KEY"
           
-          # Build the app with automatic provisioning updates and App Store Connect credentials
-          xcodebuild -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -configuration Release \
-            -destination 'generic/platform=iOS' \
-            -archivePath /tmp/build/TravelExpenses.xcarchive \
-            -allowProvisioningUpdates \
-            -allowProvisioningDeviceRegistration \
-            clean archive \
-            CODE_SIGN_STYLE=Automatic \
-            DEVELOPMENT_TEAM=74335G6GZ5 \
-            PRODUCT_BUNDLE_IDENTIFIER=com.Travon.TravelExpenses
+          # Create Fastfile for building
+          cat > Fastfile << EOF
+          default_platform(:ios)
+          
+          platform :ios do
+            desc "Build and archive iOS app"
+            lane :build do
+              setup_ci if is_ci
+              
+              sync_code_signing(
+                type: "appstore",
+                app_identifier: "com.Travon.TravelExpenses",
+                team_id: "74335G6GZ5",
+                api_key_path: "/tmp/api_key.json",
+                readonly: false
+              )
+              
+              build_ios_app(
+                project: "TravelExpenses.xcodeproj",
+                scheme: "TravelExpenses",
+                configuration: "Release",
+                export_method: "app-store",
+                export_options: {
+                  method: "app-store",
+                  teamID: "74335G6GZ5",
+                  signingStyle: "automatic"
+                },
+                output_directory: "/tmp/build/ios",
+                output_name: "TravelExpenses.ipa",
+                clean: true,
+                archive_path: "/tmp/build/TravelExpenses.xcarchive"
+              )
+            end
+          end
+          EOF
+          
+          # Build using fastlane
+          fastlane build
       - name: Create iOS build artifacts
         script: |
-          # Create .ipa file with automatic provisioning updates
-          xcodebuild -exportArchive \
-            -archivePath /tmp/build/TravelExpenses.xcarchive \
-            -exportPath /tmp/build/ios \
-            -exportOptionsPlist /tmp/exportOptions.plist \
-            -allowProvisioningUpdates
+          # Fastlane already created the .ipa file
+          echo "Checking for created artifacts..."
+          ls -la /tmp/build/ios/
+          
+          # Verify the .ipa file exists
+          if [ -f "/tmp/build/ios/TravelExpenses.ipa" ]; then
+            echo "✅ TravelExpenses.ipa created successfully"
+          else
+            echo "❌ TravelExpenses.ipa not found"
+            exit 1
+          fi
       - name: Publish to App Store Connect
         script: |
           # Upload to App Store Connect using xcrun notarytool
