@@ -38,9 +38,6 @@ workflows:
           /usr/libexec/PlistBuddy -c "Add :objects:F21C12C92E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER string TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj" 2>/dev/null || /usr/libexec/PlistBuddy -c "Set :objects:F21C12C92E212CD800C7DB37:buildSettings:PROVISIONING_PROFILE_SPECIFIER TravelExpenses_AppStore" "$XCODE_PROJECT/project.pbxproj"
       - name: Get iOS code signing files
         script: |
-          # Create API key file for App Store Connect
-          app-store-connect create-api-key --file /tmp/api_key.json --issuer-id $APP_STORE_CONNECT_ISSUER_ID --key-id $APP_STORE_CONNECT_API_KEY_ID --private-key "$APP_STORE_CONNECT_API_KEY"
-          
           # Set up keychain for code signing
           security create-keychain -p "codemagic" build.keychain
           security default-keychain -s build.keychain
@@ -49,6 +46,15 @@ workflows:
           
           # Set partition list
           security set-key-partition-list -S apple-tool:,apple: -s -k "codemagic" build.keychain
+          
+          # Create API key file manually
+          cat > /tmp/api_key.json << EOF
+          {
+            "keyId": "$APP_STORE_CONNECT_API_KEY_ID",
+            "issuerId": "$APP_STORE_CONNECT_ISSUER_ID",
+            "privateKey": "$APP_STORE_CONNECT_API_KEY"
+          }
+          EOF
       - name: Build iOS app
         script: |
           # Build the app
@@ -60,13 +66,7 @@ workflows:
             clean archive
       - name: Create iOS build artifacts
         script: |
-          # Create .ipa file
-          xcodebuild -exportArchive \
-            -archivePath /tmp/build/TravelExpenses.xcarchive \
-            -exportPath /tmp/build/ios \
-            -exportOptionsPlist /tmp/exportOptions.plist
-          
-          # Create export options plist
+          # Create export options plist first
           cat > /tmp/exportOptions.plist << EOF
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -75,28 +75,34 @@ workflows:
               <key>method</key>
               <string>app-store</string>
               <key>teamID</key>
-              <string>$TEAM_ID</string>
+              <string>74335G6GZ5</string>
               <key>signingStyle</key>
               <string>manual</string>
               <key>provisioningProfiles</key>
               <dict>
-                  <key>$BUNDLE_ID</key>
-                  <string>$PROVISIONING_PROFILE_SPECIFIER</string>
+                  <key>com.Travon.TravelExpenses</key>
+                  <string>TravelExpenses_AppStore</string>
               </dict>
               <key>signingCertificate</key>
-              <string>$CODE_SIGN_IDENTITY</string>
+              <string>iPhone Distribution</string>
           </dict>
           </plist>
           EOF
+          
+          # Create .ipa file
+          xcodebuild -exportArchive \
+            -archivePath /tmp/build/TravelExpenses.xcarchive \
+            -exportPath /tmp/build/ios \
+            -exportOptionsPlist /tmp/exportOptions.plist
       - name: Publish to App Store Connect
         script: |
-          # Upload to App Store Connect
-          xcrun altool --upload-app \
-            --type ios \
-            --file "/tmp/build/ios/TravelExpenses.ipa" \
-            --username "$APP_STORE_CONNECT_USERNAME" \
+          # Upload to App Store Connect using xcrun notarytool
+          echo "Uploading to App Store Connect..."
+          xcrun notarytool submit "/tmp/build/ios/TravelExpenses.ipa" \
+            --apple-id "$APP_STORE_CONNECT_USERNAME" \
             --password "$APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD" \
-            --verbose
+            --team-id "74335G6GZ5" \
+            --wait
     artifacts:
       - /tmp/build/ios/*.ipa
       - /tmp/build/TravelExpenses.xcarchive
