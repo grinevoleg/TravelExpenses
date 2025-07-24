@@ -68,6 +68,11 @@ workflows:
           export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
           export APP_STORE_CONNECT_API_KEY="$APP_STORE_CONNECT_API_KEY"
           
+          # Verify variables are set
+          echo "Issuer ID: $APP_STORE_CONNECT_ISSUER_ID"
+          echo "Key ID: $APP_STORE_CONNECT_API_KEY_ID"
+          echo "API Key length: ${#APP_STORE_CONNECT_API_KEY} characters"
+          
           echo "✅ Apple Developer account setup completed"
       - name: Create export options plist
         script: |
@@ -111,6 +116,7 @@ workflows:
             -allowProvisioningUpdates \
             -authenticationKeyPath "/tmp/api_key.json" \
             -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
+            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
             clean archive
           
           # Check if archive was created
