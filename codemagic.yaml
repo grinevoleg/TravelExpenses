@@ -74,6 +74,9 @@ workflows:
           export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
           export APP_STORE_CONNECT_API_KEY_PATH="~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8"
           
+          # Set match password for certificate encryption
+          export MATCH_PASSWORD="TravelExpenses2024!"
+          
           # Use fastlane to sync certificates and profiles
           fastlane run sync_code_signing \
             type:appstore \
@@ -93,6 +96,9 @@ workflows:
           export FASTLANE_SKIP_UPDATE_CHECK=1
           export FASTLANE_HIDE_CHANGELOG=1
           export FASTLANE_DISABLE_COLORS=1
+          
+          # Set match password for certificate encryption
+          export MATCH_PASSWORD="TravelExpenses2024!"
           
           # Create fastlane directory structure
           mkdir -p fastlane
