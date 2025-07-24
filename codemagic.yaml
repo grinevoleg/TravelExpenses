@@ -1,6 +1,8 @@
 workflows:
   ios-workflow:
     name: iOS Workflow
+    integrations:
+      app_store_connect: TravelExpenses_API_Key
     environment:
       xcode: latest
       cocoapods: default
@@ -9,13 +11,6 @@ workflows:
         XCODE_SCHEME: "TravelExpenses"
         BUNDLE_ID: "com.Travon.TravelExpenses"
         TEAM_ID: "74335G6GZ5"
-        # App Store Connect API credentials
-        APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
-        APP_STORE_CONNECT_API_KEY_ID: $APP_STORE_CONNECT_API_KEY_ID
-        APP_STORE_CONNECT_API_KEY: $APP_STORE_CONNECT_API_KEY
-        # App Store Connect credentials for upload
-        APP_STORE_CONNECT_USERNAME: $APP_STORE_CONNECT_USERNAME
-        APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD: $APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD
       flutter: stable
       node: latest
     scripts:
@@ -33,12 +28,6 @@ workflows:
           echo "✅ Code signing settings updated"
       - name: Get iOS code signing files
         script: |
-          # Check required environment variables
-          if [ -z "$APP_STORE_CONNECT_API_KEY_ID" ] || [ -z "$APP_STORE_CONNECT_ISSUER_ID" ] || [ -z "$APP_STORE_CONNECT_API_KEY" ]; then
-            echo "❌ Missing required App Store Connect environment variables"
-            exit 1
-          fi
-          
           # Set up keychain for code signing
           security create-keychain -p "codemagic" build.keychain
           security default-keychain -s build.keychain
@@ -54,31 +43,8 @@ workflows:
           # Set up Apple Developer account in Xcode
           echo "Setting up Apple Developer account..."
           
-          # Create PEM format key file for xcodebuild
-          cat > /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8 << EOF
-          $APP_STORE_CONNECT_API_KEY
-          EOF
-          chmod 600 /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
-          
-          # Create App Store Connect API key file for xcodebuild
-          cat > /tmp/api_key.json << EOF
-          {
-            "key_id": "$APP_STORE_CONNECT_API_KEY_ID",
-            "issuer_id": "$APP_STORE_CONNECT_ISSUER_ID",
-            "key": "$APP_STORE_CONNECT_API_KEY"
-          }
-          EOF
-          
-          # Set environment variables for Xcode
-          export APP_STORE_CONNECT_ISSUER_ID="$APP_STORE_CONNECT_ISSUER_ID"
-          export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
-          export APP_STORE_CONNECT_API_KEY="$APP_STORE_CONNECT_API_KEY"
-          
-          # Verify variables are set
-          echo "Issuer ID: $APP_STORE_CONNECT_ISSUER_ID"
-          echo "Key ID: $APP_STORE_CONNECT_API_KEY_ID"
-          echo "API Key length: ${#APP_STORE_CONNECT_API_KEY} characters"
-          echo "PEM file created: /tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8"
+          # Codemagic will automatically handle API key authentication
+          # through the app_store_connect integration
           
           echo "✅ Apple Developer account setup completed"
       - name: Create export options plist
@@ -121,9 +87,6 @@ workflows:
             -destination 'generic/platform=iOS' \
             -archivePath "/tmp/build/TravelExpenses.xcarchive" \
             -allowProvisioningUpdates \
-            -authenticationKeyPath "/tmp/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8" \
-            -authenticationKeyID "$APP_STORE_CONNECT_API_KEY_ID" \
-            -authenticationKeyIssuerID "$APP_STORE_CONNECT_ISSUER_ID" \
             clean archive
           
           # Check if archive was created
@@ -165,8 +128,7 @@ workflows:
       - /tmp/build/TravelExpenses.xcarchive
     publishing:
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_API_KEY
-        key_id: $APP_STORE_CONNECT_API_KEY_ID
-        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        # Using Apple Developer Portal integration
+        # No need to specify api_key, key_id, issuer_id manually
         submit_to_testflight: true
         submit_to_app_store: false 
