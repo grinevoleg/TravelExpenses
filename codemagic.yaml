@@ -84,6 +84,7 @@ workflows:
             app_identifier:com.Travon.TravelExpenses \
             team_id:74335G6GZ5 \
             git_url:https://github.com/grinevoleg/TravelExpenses.git \
+            api_key_path:~/.appstoreconnect/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8 \
             readonly:false
           
           # Check if sync was successful
