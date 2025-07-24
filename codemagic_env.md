@@ -22,6 +22,8 @@ APP_STORE_CONNECT_ISSUER_ID = 74335G6GZ5
 APP_STORE_CONNECT_API_KEY_ID = 8NJVRV8NU7
 APP_STORE_CONNECT_API_KEY = [содержимое .p8 файла]
 CERTIFICATE_ID = [ID вашего Distribution сертификата]
+APP_STORE_CONNECT_USERNAME = [ваш Apple ID email]
+APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD = [App-specific пароль]
 ```
 
 ### Code Signing (если используете ручные сертификаты):
@@ -54,4 +56,13 @@ KEYCHAIN_PASSWORD = codemagic
 ✅ Позволяет Xcode автоматически создавать профили
 ✅ Обновляет существующие профили при необходимости
 ✅ Работает с App Store Connect API
-✅ Упрощает процесс подписи кода в CI/CD 
+✅ Упрощает процесс подписи кода в CI/CD
+
+## 🔑 Как создать App-specific пароль:
+
+1. **Перейдите на** https://appleid.apple.com
+2. **Войдите** в свой Apple ID
+3. **Security** → **App-Specific Passwords**
+4. **Generate Password** → **TravelExpenses Codemagic**
+5. **Скопируйте** сгенерированный пароль
+6. **Добавьте** в переменную `APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD` 

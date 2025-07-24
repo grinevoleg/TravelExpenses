@@ -52,6 +52,12 @@ workflows:
           }
           EOF
           
+          # Add App Store Connect account to Xcode
+          echo "Adding App Store Connect account to Xcode..."
+          xcrun altool --store-password-in-keychain-item "AC_PASSWORD" \
+            --username "$APP_STORE_CONNECT_USERNAME" \
+            --password "$APP_STORE_CONNECT_APP_SPECIFIC_PASSWORD" || echo "Account might already exist"
+          
           # Create or fetch provisioning profile
           app-store-connect profiles create-profile \
             --name "TravelExpenses_AppStore" \
