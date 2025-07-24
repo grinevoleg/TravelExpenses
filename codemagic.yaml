@@ -2,6 +2,8 @@ workflows:
   ios-workflow:
     name: iOS Workflow
     environment:
+      groups:
+        - vars
       xcode: latest
       cocoapods: default
       vars:
