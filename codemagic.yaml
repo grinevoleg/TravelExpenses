@@ -95,6 +95,11 @@ workflows:
           export APP_STORE_CONNECT_API_KEY_ID="$APP_STORE_CONNECT_API_KEY_ID"
           export APP_STORE_CONNECT_API_KEY="$APP_STORE_CONNECT_API_KEY"
           
+          # Set non-interactive environment variables
+          export FASTLANE_SKIP_UPDATE_CHECK=1
+          export FASTLANE_HIDE_CHANGELOG=1
+          export FASTLANE_DISABLE_COLORS=1
+          
           # Create fastlane directory structure
           mkdir -p fastlane
           
@@ -134,8 +139,8 @@ workflows:
           end
           EOF
           
-          # Build using fastlane in non-interactive mode
-          fastlane build --non-interactive
+          # Build using fastlane
+          fastlane build
       - name: Create iOS build artifacts
         script: |
           # Fastlane already created the .ipa file
