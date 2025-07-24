@@ -1,8 +1,6 @@
 workflows:
   ios-workflow:
     name: iOS Workflow
-    integrations:
-      app_store_connect: TravelExpenses_API_Key
     environment:
       xcode: latest
       cocoapods: default
@@ -11,6 +9,10 @@ workflows:
         XCODE_SCHEME: "TravelExpenses"
         BUNDLE_ID: "com.Travon.TravelExpenses"
         TEAM_ID: "74335G6GZ5"
+        # App Store Connect API credentials
+        APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
+        APP_STORE_CONNECT_API_KEY_ID: $APP_STORE_CONNECT_API_KEY_ID
+        APP_STORE_CONNECT_API_KEY: $APP_STORE_CONNECT_API_KEY
       flutter: stable
       node: latest
     scripts:
@@ -128,7 +130,11 @@ workflows:
       - /tmp/build/TravelExpenses.xcarchive
     publishing:
       app_store_connect:
-        # Using Apple Developer Portal integration
-        # No need to specify api_key, key_id, issuer_id manually
+        # Contents of the API key saved as a secret environment variable
+        api_key: $APP_STORE_CONNECT_API_KEY
+        # Alphanumeric value that identifies the API key
+        key_id: $APP_STORE_CONNECT_API_KEY_ID
+        # Alphanumeric value that identifies who created the API key
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
         submit_to_app_store: false 
