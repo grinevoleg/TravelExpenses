@@ -52,6 +52,22 @@ workflows:
           }
           EOF
           
+          # Create export options plist early
+          cat > /tmp/exportOptions.plist << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key>
+              <string>app-store</string>
+              <key>teamID</key>
+              <string>74335G6GZ5</string>
+              <key>signingStyle</key>
+              <string>automatic</string>
+          </dict>
+          </plist>
+          EOF
+          
           # Add App Store Connect account to Xcode
           echo "Adding App Store Connect account to Xcode..."
           xcrun altool --store-password-in-keychain-item "AC_PASSWORD" \
@@ -77,32 +93,21 @@ workflows:
           cp /tmp/TravelExpenses_AppStore.mobileprovision "$HOME/Library/MobileDevice/Provisioning Profiles/" 2>/dev/null || echo "Profile installation skipped"
       - name: Build iOS app
         script: |
-          # Build the app with automatic provisioning updates
+          # Build the app with automatic provisioning updates and App Store Connect credentials
           xcodebuild -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
             -configuration Release \
             -destination 'generic/platform=iOS' \
             -archivePath /tmp/build/TravelExpenses.xcarchive \
             -allowProvisioningUpdates \
-            clean archive
+            -allowProvisioningDeviceRegistration \
+            -exportOptionsPlist /tmp/exportOptions.plist \
+            clean archive \
+            CODE_SIGN_STYLE=Automatic \
+            DEVELOPMENT_TEAM=74335G6GZ5 \
+            PRODUCT_BUNDLE_IDENTIFIER=com.Travon.TravelExpenses
       - name: Create iOS build artifacts
         script: |
-          # Create export options plist first
-          cat > /tmp/exportOptions.plist << EOF
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-              <key>method</key>
-              <string>app-store</string>
-              <key>teamID</key>
-              <string>74335G6GZ5</string>
-              <key>signingStyle</key>
-              <string>automatic</string>
-          </dict>
-          </plist>
-          EOF
-          
           # Create .ipa file with automatic provisioning updates
           xcodebuild -exportArchive \
             -archivePath /tmp/build/TravelExpenses.xcarchive \
